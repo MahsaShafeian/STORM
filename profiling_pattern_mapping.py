@@ -230,11 +230,8 @@ class AssemblyParser:
 
         if len(operands) > 1:
             for i, op in enumerate(operands):
-                if not isinstance(op, str):
-                    logging.warning(f"Operand is not a valid string: {op}")
-                    continue
-                print(f"Operands at line {line_number}: {operands}")
-                match = re.match(r'(-?\d+)?\((%[a-z]+)(?:,([a-z%]+),(\d+))?\)', op)
+                match = re.match(r'(-\d+\(%(rbp|rsp))', op)
+                print(f"matched {match}")
                 if match:
                     address = match.group(1)
                     action = 'write' if i == 1 and opcode.startswith('mov') else 'read'
@@ -270,7 +267,7 @@ class AssemblyParser:
         for func_name in self.functions:
             formatted_variables = [
                 {
-                    "name": address,
+                    "name": address + ')',
                     "lines": details["lines"],
                     "size": details["size"]
                 }
