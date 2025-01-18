@@ -96,6 +96,16 @@ def process_json_file(file_path, output_file):
                 
                 variable_details[function_name] = variable_list
                 
+                temp_list = {}
+                for _v in variable_list:
+                    key = str(variable_list[i][1]) + str(variable_list[i][2])
+                    if key in temp_list:
+                        temp_list[key] += 1
+                        continue
+                    else:
+                        temp_list[key] = 1
+                print(f"temp_list: {temp_list}")
+                
                 find_tree([], variable_list)
                 
                 for index in range(len(local_addr)):
