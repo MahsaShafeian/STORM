@@ -5,9 +5,15 @@ num_of_set = 128
 num_of_columns = 16
 blk_size = 64
 
-def find_tree(local_list,variable_list):
+def find_tree(local_list, variable_list, index):
     if len(variable_list) > 0:
+        check_list = {}
         for i in range(len(variable_list)):
+            key = str(variable_list[i][1]) + str(variable_list[i][2])
+            if key in check_list:
+                continue
+            else:
+                check_list[key] = 1
             variable_list2 = variable_list[:]
             local_list2 = local_list[:]
             var_t = variable_list2.pop(i)
@@ -67,7 +73,7 @@ def process_json_file(file_path, output_file):
                     write_count = len(variable['lines']['write'])
                     used_lines = variable['lines']['write'] + variable['lines']['read']
                     
-                    variable_list.append((variable_name, variable_size))
+                    variable_list.append((variable_name, variable_size, write_count))
                     
                     if variable_size == 8:
                         if current_index + 1 < local_addr_size:
@@ -86,7 +92,7 @@ def process_json_file(file_path, output_file):
                 
                 # Add empty locations to the variable list
                 for i in range(empty_locations):
-                    variable_list.append((f"emptyV{i}", 4))
+                    variable_list.append((f"emptyV{i}", 4, 0))
                 
                 variable_details[function_name] = variable_list
                 
