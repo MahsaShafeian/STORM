@@ -231,7 +231,7 @@ class AssemblyParser:
         if len(operands) > 1:
             for i, op in enumerate(operands):
                 match = re.match(r'(-\d+\(%(rbp|rsp))', op)
-                print(f"matched {match}")
+                # print(f"matched {match}")
                 if match:
                     address = match.group(1)
                     action = 'write' if i == 1 and opcode.startswith('mov') else 'read'
@@ -279,6 +279,7 @@ class AssemblyParser:
                 "label": self.call_labels.get(func_name, 0),
                 "stack_size": self.stack_frames.get(func_name, ""),
                 "call_count": self.function_call_counts.get(func_name, 0),
+                "total_variable_size": sum(details["size"]for details in self.stack_access.get(func_name, {}).values()),
                 "variables": formatted_variables,
                 "loops": self.loops.get(func_name, []),
                 #  "jump_in_loop_labels": self.jump_in_loop_labels.get(func_name, [])

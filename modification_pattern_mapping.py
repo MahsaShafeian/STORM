@@ -5,6 +5,18 @@ num_of_set = 128
 num_of_columns = 16
 blk_size = 64
 
+def find_tree(local_list,variable_list):
+    if len(variable_list) > 0:
+        for i in range(len(variable_list)):
+            variable_list2 = variable_list[:]
+            local_list2 = local_list[:]
+            var_t = variable_list2.pop(i)
+            local_list2.append(var_t)
+            find_tree(local_list2, variable_list2)
+    else:
+        # print(f"local list:{local_list}, variable list: {variable_list}")
+        return
+
 def process_json_file(file_path, output_file):
     try:
         with open(file_path, 'r') as file:
@@ -16,7 +28,7 @@ def process_json_file(file_path, output_file):
         
         function_usage_arrays = {}
         usage_matrix = np.zeros((num_of_set, num_of_columns), dtype=int)
-        
+        variable_details = {} 
         for function in data:
             function_name = function['function_name']
             label = function['label']
@@ -47,11 +59,16 @@ def process_json_file(file_path, output_file):
                     usage_array[i] = usage_matrix[(label + (i // 16)) % num_of_set, i % 16]
                 
                 current_index = 4 
+                variable_list = []  # List to store variable tuples (name, size)
                 for variable in function.get('variables', []):
                     variable_name = variable['name']
                     variable_size = variable['size']
+                    total_variable_size = function.get('total_variable_size')
                     write_count = len(variable['lines']['write'])
                     used_lines = variable['lines']['write'] + variable['lines']['read']
+                    
+                    variable_list.append((variable_name, variable_size))
+                    
                     if variable_size == 8:
                         if current_index + 1 < local_addr_size:
                             local_addr[current_index] = (variable_name, write_count, used_lines, variable_size)
@@ -61,58 +78,20 @@ def process_json_file(file_path, output_file):
                         if current_index < local_addr_size:
                             local_addr[current_index] = (variable_name, write_count, used_lines, variable_size)
                             current_index += 1
+                variable_details[function_name] = variable_list
                 
-                # 1 part
-                for i in range(4, len(usage_array) - 2):
-                    if local_addr[i] == "depend" or local_addr[i+1] == "depend":
-                        continue
-                    for j in range(i + 1, len(usage_array)-2, 1):
-                        if local_addr[j] == "depend" or local_addr[j+1] == "depend":
-                            continue
-
-                        write_count_i = local_addr[i][1] if local_addr[i][0] is not None else 0
-                        write_count_i1 = local_addr[j][1] if local_addr[j][0] is not None else 0
-                        
-                        sum_case_1 = write_count_i + usage_array[i]
-                        sum_case_2 = write_count_i + usage_array[j]
-                        sum_case_3 = write_count_i1 + usage_array[i]
-                        sum_case_4 = write_count_i1 + usage_array[j]
-                        
-                        max_value1 = max(sum_case_1, sum_case_4)
-                        max_value2 = max(sum_case_2, sum_case_3)
-                        
-                        if max_value1 < max_value2:
-                            continue  
-                        elif max_value1 > max_value2:
-                            local_addr[i], local_addr[j] = local_addr[j], local_addr[i]
+                # Calculate A and number of empty locations
+                A = stack_size - total_variable_size
+                empty_locations = A // 4
                 
-                # 2 part
-                for i in range(4, len(usage_array) - 2):
-                    if local_addr[i] == "depend" or local_addr[i+2] == "depend" :
-                        continue
-                    for j in range(i + 1, len(usage_array)-2, 1):
-                        if local_addr[j] == "depend" or local_addr[j+2] == "depend":
-                            continue
-                        
-                        # print(f"{local_addr[i+1][0]}, {local_addr[j+1][0]}")
-                        write_count_i = (local_addr[i][1] if local_addr[i][0] is not None else 0) + (local_addr[i+1][1] if local_addr[i+1][0] is not None and local_addr[i+1][0] != "d" else 0)
-                        write_count_i1 = (local_addr[j][1] if local_addr[j][0] is not None else 0) + (local_addr[j+1][1] if local_addr[j+1][0] is not None and local_addr[j+1][0] != "d" else 0)
-                        
-                        sum_case_1 = write_count_i + usage_array[i] + usage_array[i+1]
-                        sum_case_2 = write_count_i + usage_array[j] + usage_array[j+1]
-                        sum_case_3 = write_count_i1 + usage_array[i] + usage_array[i+1]
-                        sum_case_4 = write_count_i1 + usage_array[j] + usage_array[j+1]
-                        
-                        max_value1 = max(sum_case_1, sum_case_4)
-                        max_value2 = max(sum_case_2, sum_case_3)
-                        
-                        if max_value1 < max_value2:
-                            # print(f"if max_value1:{max_value1}, max_value2:{max_value2}")
-                            continue  
-                        elif max_value1 > max_value2:
-                            # print(f"elif max_value1:{max_value1}, max_value2:{max_value2}")
-                            local_addr[i], local_addr[i+1], local_addr[j], local_addr[j+1] = local_addr[j], local_addr[j+1], local_addr[i], local_addr[i+1]
-
+                # Add empty locations to the variable list
+                for i in range(empty_locations):
+                    variable_list.append((f"emptyV{i}", 4))
+                
+                variable_details[function_name] = variable_list
+                
+                find_tree([], variable_list)
+                
                 for index in range(len(local_addr)):
                     local_variable = local_addr[index]
                     if local_variable != "depend" and local_variable[0] is not None:
@@ -120,7 +99,7 @@ def process_json_file(file_path, output_file):
                             line = line_p - 1
                             offset_from_rbp = -((index-3) * 4) - (4 if local_variable[3] == 8 else 0)
                             target_address = f"{offset_from_rbp}(%rbp)"
-                            print(f"pre: {asm_lines[line]}, target address = {target_address}, line:{line+1}, on file:{assembly_file}")
+                            # print(f"pre: {asm_lines[line]}, target address = {target_address}, line:{line+1}, on file:{assembly_file}")
                             line_arry = asm_lines[line].split(' ')
                             for part in range(len(line_arry)):
                                 if 'rbp' in line_arry[part]:
@@ -130,7 +109,7 @@ def process_json_file(file_path, output_file):
                                         line_arry[part] = target_address
                             
                             asm_lines[line] = (' '.join(line_arry)) + "\t\t#this_line_update!"
-                            print(f"==> {asm_lines[line]}")
+                            # print(f"==> {asm_lines[line]}")
                 
                 for i in range(len(local_addr)):
                     if local_addr[i][0] is not None:
@@ -152,6 +131,11 @@ def process_json_file(file_path, output_file):
                 out_file.write('\t'.join(map(str, row)) + '\n')
             for function_name, local_addr in function_usage_arrays.items():
                 out_file.write(f"{function_name}:\t" + '\t'.join([f"({x[0]}, {x[1]})" for x in local_addr]) + '\n')
+                
+            out_file.write("\nVariable Details:\n")
+            for function_name, variables in variable_details.items():
+                out_file.write(f"{function_name}: {variables}\n")
+
 
     except FileNotFoundError:
         print(f"The file '{file_path}' was not found.")
