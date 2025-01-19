@@ -259,7 +259,11 @@ class AssemblyParser:
                     current_offset = int(re.search(r'-\d+', address).group())
                     next_offset = int(re.search(r'-\d+', sorted_addresses[i + 1]).group())
                     distance = abs(current_offset - next_offset)
-                    self.stack_access[func_name][address]["size"] = distance
+                    remainder = distance % 4
+                    if distance % 4 != 0 :
+                        self.stack_access[func_name][address]["size"] = (distance + (4 - remainder))
+                    else:
+                        self.stack_access[func_name][address]["size"] = distance 
 
     def get_json_data(self):
         """Organize the data in JSON format with stack read/write access."""
