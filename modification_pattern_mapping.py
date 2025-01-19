@@ -5,23 +5,62 @@ num_of_set = 128
 num_of_columns = 16
 blk_size = 64
 
-def find_tree(local_list, variable_list, index):
-    if len(variable_list) > 0:
-        check_list = {}
-        for i in range(len(variable_list)):
-            key = str(variable_list[i][1]) + str(variable_list[i][2])
-            if key in check_list:
-                continue
-            else:
-                check_list[key] = 1
-            variable_list2 = variable_list[:]
-            local_list2 = local_list[:]
-            var_t = variable_list2.pop(i)
-            local_list2.append(var_t)
-            find_tree(local_list2, variable_list2)
-    else:
-        # print(f"local list:{local_list}, variable list: {variable_list}")
-        return
+# def find_tree(local_list, variable_list, index):
+#     if len(variable_list) > 0:
+#         check_list = {}
+#         for i in range(len(variable_list)):
+#             key = str(variable_list[i][1]) + str(variable_list[i][2])
+#             if key in check_list:
+#                 continue
+#             else:
+#                 check_list[key] = 1
+#             variable_list2 = variable_list[:]
+#             local_list2 = local_list[:]
+#             var_t = variable_list2.pop(i)
+#             local_list2.append(var_t)
+#             find_tree(local_list2, variable_list2, 0)
+#     else:
+#         # print(f"local list:{local_list}, variable list: {variable_list}")
+#         return
+
+def generate_write_list(variable_list, usage_array):
+    """
+    Generate a write list based on variable sizes and write counts.
+    Then combine it with the usage_array element-wise and find the maximum value.
+
+    Args:
+        variable_list (list): A list of tuples where each tuple is (variable_name, size, write_count).
+        usage_array (numpy.ndarray): Array containing usage counts.
+
+    Returns:
+        tuple: Combined array and its maximum value.
+    """
+    # Generate write list
+    write_list = []
+    for variable in variable_list:
+        _, size, write_count = variable
+        repeat_count = size // 4  # Determine the number of entries based on size (assuming size is a multiple of 4).
+        write_list.extend([write_count] * repeat_count)
+    
+    print(f"Write List: {write_list}")
+
+    # Ensure usage_array and write_list have the same length
+    if len(usage_array) != len(write_list):
+        raise ValueError("usage_array and write_list must have the same length.")
+    
+    # Convert write_list to numpy array if necessary
+    write_array = np.array(write_list)
+    
+    # Element-wise addition
+    combined_array = usage_array + write_array
+    
+    # Find the maximum value
+    max_value = np.max(combined_array)
+
+    print(f"Combined Array: {combined_array}")
+    print(f"Maximum Value: {max_value}")
+
+    return combined_array, max_value
 
 def process_json_file(file_path, output_file):
     try:
@@ -96,17 +135,21 @@ def process_json_file(file_path, output_file):
                 
                 variable_details[function_name] = variable_list
                 
+                # print(f"var_list: {variable_list}")
+                
                 temp_list = {}
                 for _v in variable_list:
-                    key = str(variable_list[i][1]) + str(variable_list[i][2])
+                    key = str(_v[1]) + str(_v[2])
                     if key in temp_list:
                         temp_list[key] += 1
                         continue
                     else:
                         temp_list[key] = 1
-                print(f"temp_list: {temp_list}")
+                # print(f"temp_list: {temp_list}")
+                combined_array, max_value = generate_write_list(variable_list, usage_array)
+
                 
-                find_tree([], variable_list)
+                # find_tree([], variable_list, 0)
                 
                 for index in range(len(local_addr)):
                     local_variable = local_addr[index]
