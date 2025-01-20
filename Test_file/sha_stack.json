@@ -1,0 +1,869 @@
+[
+    {
+        "function_name": "sha_transform",
+        "source_file": "/home/mahsa/Documents/MiBench_project/sha/sha_alignment.s",
+        "label": 0,
+        "stack_size": 768,
+        "call_count": 0,
+        "total_variable_size": 728,
+        "variables": [
+            {
+                "name": "-728(%rbp)",
+                "lines": {
+                    "read": [
+                        21,
+                        62,
+                        65,
+                        68,
+                        71,
+                        74,
+                        249,
+                        253,
+                        255,
+                        259,
+                        261,
+                        265,
+                        267,
+                        271,
+                        273,
+                        277
+                    ],
+                    "write": [
+                        14
+                    ]
+                },
+                "size": 20
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        280
+                    ],
+                    "write": [
+                        16
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-708(%rbp)",
+                "lines": {
+                    "read": [
+                        22,
+                        26,
+                        29,
+                        31,
+                        36,
+                        40,
+                        45,
+                        50,
+                        55,
+                        58,
+                        60,
+                        97,
+                        118,
+                        120,
+                        137,
+                        158,
+                        160,
+                        182,
+                        204,
+                        206,
+                        223,
+                        245,
+                        247
+                    ],
+                    "write": [
+                        18,
+                        33,
+                        77,
+                        122,
+                        162,
+                        208
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-656(%rbp)",
+                "lines": {
+                    "read": [
+                        39,
+                        43,
+                        48,
+                        53,
+                        99,
+                        139,
+                        184,
+                        225
+                    ],
+                    "write": [
+                        28,
+                        57
+                    ]
+                },
+                "size": 648
+            },
+            {
+                "name": "-704(%rbp)",
+                "lines": {
+                    "read": [
+                        80,
+                        83,
+                        114,
+                        125,
+                        128,
+                        154,
+                        165,
+                        168,
+                        200,
+                        211,
+                        214,
+                        241,
+                        251
+                    ],
+                    "write": [
+                        64,
+                        117,
+                        157,
+                        203,
+                        244
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-696(%rbp)",
+                "lines": {
+                    "read": [
+                        87,
+                        90,
+                        107,
+                        110,
+                        131,
+                        147,
+                        150,
+                        174,
+                        193,
+                        196,
+                        217,
+                        234,
+                        237,
+                        257
+                    ],
+                    "write": [
+                        67,
+                        115,
+                        155,
+                        201,
+                        242
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-688(%rbp)",
+                "lines": {
+                    "read": [
+                        88,
+                        105,
+                        132,
+                        145,
+                        172,
+                        176,
+                        191,
+                        218,
+                        232,
+                        263
+                    ],
+                    "write": [
+                        70,
+                        113,
+                        153,
+                        199,
+                        240
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-680(%rbp)",
+                "lines": {
+                    "read": [
+                        92,
+                        103,
+                        133,
+                        143,
+                        173,
+                        177,
+                        189,
+                        219,
+                        230,
+                        269
+                    ],
+                    "write": [
+                        73,
+                        106,
+                        146,
+                        192,
+                        233
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-672(%rbp)",
+                "lines": {
+                    "read": [
+                        95,
+                        135,
+                        180,
+                        221,
+                        275
+                    ],
+                    "write": [
+                        76,
+                        104,
+                        144,
+                        190,
+                        231
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-664(%rbp)",
+                "lines": {
+                    "read": [
+                        116,
+                        156,
+                        202,
+                        243
+                    ],
+                    "write": [
+                        102,
+                        142,
+                        188,
+                        229
+                    ]
+                },
+                "size": 8
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L3",
+                "start_line": 20,
+                "end_line": 32,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 15,
+                "iterations": 16
+            },
+            {
+                "loop_label": ".L5",
+                "start_line": 35,
+                "end_line": 61,
+                "initial_value": 16,
+                "step_value": 1,
+                "final_value": 79,
+                "iterations": 64
+            },
+            {
+                "loop_label": ".L7",
+                "start_line": 79,
+                "end_line": 121,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 19,
+                "iterations": 20
+            },
+            {
+                "loop_label": ".L9",
+                "start_line": 124,
+                "end_line": 161,
+                "initial_value": 20,
+                "step_value": 1,
+                "final_value": 39,
+                "iterations": 20
+            },
+            {
+                "loop_label": ".L11",
+                "start_line": 164,
+                "end_line": 207,
+                "initial_value": 40,
+                "step_value": 1,
+                "final_value": 59,
+                "iterations": 20
+            },
+            {
+                "loop_label": ".L13",
+                "start_line": 210,
+                "end_line": 248,
+                "initial_value": 60,
+                "step_value": 1,
+                "final_value": 79,
+                "iterations": 20
+            }
+        ]
+    },
+    {
+        "function_name": "byte_reverse",
+        "source_file": "/home/mahsa/Documents/MiBench_project/sha/sha_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "call_count": 0,
+        "total_variable_size": 56,
+        "variables": [
+            {
+                "name": "-40(%rbp)",
+                "lines": {
+                    "read": [
+                        311
+                    ],
+                    "write": [
+                        302
+                    ]
+                },
+                "size": 12
+            },
+            {
+                "name": "-44(%rbp)",
+                "lines": {
+                    "read": [
+                        307,
+                        347
+                    ],
+                    "write": [
+                        303,
+                        310
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        350
+                    ],
+                    "write": [
+                        305
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-24(%rbp)",
+                "lines": {
+                    "read": [
+                        316,
+                        319,
+                        322,
+                        325,
+                        329,
+                        331,
+                        335,
+                        339,
+                        343
+                    ],
+                    "write": [
+                        312
+                    ]
+                },
+                "size": 12
+            },
+            {
+                "name": "-28(%rbp)",
+                "lines": {
+                    "read": [
+                        344,
+                        346
+                    ],
+                    "write": [
+                        313
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-12(%rbp)",
+                "lines": {
+                    "read": [
+                        341
+                    ],
+                    "write": [
+                        318
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-11(%rbp)",
+                "lines": {
+                    "read": [
+                        337
+                    ],
+                    "write": [
+                        321
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-10(%rbp)",
+                "lines": {
+                    "read": [
+                        333
+                    ],
+                    "write": [
+                        324
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-9(%rbp)",
+                "lines": {
+                    "read": [
+                        328
+                    ],
+                    "write": [
+                        327
+                    ]
+                },
+                "size": 4
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L17",
+                "start_line": 315,
+                "end_line": 348,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "sha_init",
+        "source_file": "/home/mahsa/Documents/MiBench_project/sha/sha_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "call_count": 0,
+        "total_variable_size": 8,
+        "variables": [
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        374,
+                        376,
+                        379,
+                        382,
+                        384,
+                        387,
+                        389
+                    ],
+                    "write": [
+                        373
+                    ]
+                },
+                "size": 8
+            }
+        ],
+        "loops": []
+    },
+    {
+        "function_name": "sha_update",
+        "source_file": "/home/mahsa/Documents/MiBench_project/sha/sha_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "call_count": 0,
+        "total_variable_size": 20,
+        "variables": [
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        413,
+                        419,
+                        423,
+                        426,
+                        429,
+                        435,
+                        437,
+                        443,
+                        447,
+                        454,
+                        459,
+                        469
+                    ],
+                    "write": [
+                        410
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-16(%rbp)",
+                "lines": {
+                    "read": [
+                        449,
+                        462,
+                        471
+                    ],
+                    "write": [
+                        411
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-20(%rbp)",
+                "lines": {
+                    "read": [
+                        415,
+                        431,
+                        439,
+                        463,
+                        465,
+                        467
+                    ],
+                    "write": [
+                        412
+                    ]
+                },
+                "size": 4
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L21",
+                "start_line": 428,
+                "end_line": 422,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L23",
+                "start_line": 446,
+                "end_line": 466,
+                "initial_value": null,
+                "step_value": 64,
+                "final_value": 63,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "sha_final",
+        "source_file": "/home/mahsa/Documents/MiBench_project/sha/sha_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "call_count": 0,
+        "total_variable_size": 40,
+        "variables": [
+            {
+                "name": "-40(%rbp)",
+                "lines": {
+                    "read": [
+                        495,
+                        498,
+                        505,
+                        518,
+                        527,
+                        532,
+                        535,
+                        546,
+                        556,
+                        561,
+                        564,
+                        567
+                    ],
+                    "write": [
+                        494
+                    ]
+                },
+                "size": 20
+            },
+            {
+                "name": "-16(%rbp)",
+                "lines": {
+                    "read": [
+                        501,
+                        565
+                    ],
+                    "write": [
+                        497
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        562
+                    ],
+                    "write": [
+                        500
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-20(%rbp)",
+                "lines": {
+                    "read": [
+                        507,
+                        513,
+                        516,
+                        520,
+                        544,
+                        548
+                    ],
+                    "write": [
+                        504,
+                        509
+                    ]
+                },
+                "size": 4
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L25",
+                "start_line": 542,
+                "end_line": 514,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": 56,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "sha_stream",
+        "source_file": "/home/mahsa/Documents/MiBench_project/sha/sha_alignment.s",
+        "label": 0,
+        "stack_size": 8256,
+        "call_count": 0,
+        "total_variable_size": 8240,
+        "variables": [
+            {
+                "name": "-8232(%rbp)",
+                "lines": {
+                    "read": [
+                        598,
+                        605,
+                        620
+                    ],
+                    "write": [
+                        593
+                    ]
+                },
+                "size": 20
+            },
+            {
+                "name": "-8240(%rbp)",
+                "lines": {
+                    "read": [
+                        610
+                    ],
+                    "write": [
+                        594
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        624
+                    ],
+                    "write": [
+                        596
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-8212(%rbp)",
+                "lines": {
+                    "read": [
+                        603,
+                        618
+                    ],
+                    "write": [
+                        617
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-8208(%rbp)",
+                "lines": {
+                    "read": [
+                        604,
+                        611
+                    ],
+                    "write": []
+                },
+                "size": 8200
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L29",
+                "start_line": 602,
+                "end_line": 619,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": 0,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "sha_print",
+        "source_file": "/home/mahsa/Documents/MiBench_project/sha/sha_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "call_count": 0,
+        "total_variable_size": 8,
+        "variables": [
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        653,
+                        655,
+                        657,
+                        659,
+                        661
+                    ],
+                    "write": [
+                        652
+                    ]
+                },
+                "size": 8
+            }
+        ],
+        "loops": []
+    },
+    {
+        "function_name": "main",
+        "source_file": "/home/mahsa/Documents/MiBench_project/sha/sha_driver_alignment.s",
+        "label": 0,
+        "stack_size": 256,
+        "call_count": 0,
+        "total_variable_size": 224,
+        "variables": [
+            {
+                "name": "-212(%rbp)",
+                "lines": {
+                    "read": [
+                        26,
+                        71,
+                        72
+                    ],
+                    "write": [
+                        21
+                    ]
+                },
+                "size": 12
+            },
+            {
+                "name": "-224(%rbp)",
+                "lines": {
+                    "read": [
+                        40,
+                        41,
+                        50
+                    ],
+                    "write": [
+                        22
+                    ]
+                },
+                "size": 12
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        76
+                    ],
+                    "write": [
+                        24
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-200(%rbp)",
+                "lines": {
+                    "read": [
+                        30,
+                        48,
+                        59,
+                        67
+                    ],
+                    "write": [
+                        29,
+                        47
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-192(%rbp)",
+                "lines": {
+                    "read": [
+                        31,
+                        35,
+                        60,
+                        64
+                    ],
+                    "write": []
+                },
+                "size": 184
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L4",
+                "start_line": 70,
+                "end_line": 27,
+                "initial_value": 0,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L5",
+                "start_line": 58,
+                "end_line": 49,
+                "initial_value": 16,
+                "step_value": 14,
+                "final_value": 15,
+                "iterations": 0
+            },
+            {
+                "loop_label": ".L6",
+                "start_line": 39,
+                "end_line": 73,
+                "initial_value": 16,
+                "step_value": 16,
+                "final_value": 79,
+                "iterations": 4
+            }
+        ]
+    }
+]

@@ -1,27 +1,10 @@
 import json
 import numpy as np
+import random
 
 num_of_set = 128 
 num_of_columns = 16
 blk_size = 64
-
-# def find_tree(local_list, variable_list, index):
-#     if len(variable_list) > 0:
-#         check_list = {}
-#         for i in range(len(variable_list)):
-#             key = str(variable_list[i][1]) + str(variable_list[i][2])
-#             if key in check_list:
-#                 continue
-#             else:
-#                 check_list[key] = 1
-#             variable_list2 = variable_list[:]
-#             local_list2 = local_list[:]
-#             var_t = variable_list2.pop(i)
-#             local_list2.append(var_t)
-#             find_tree(local_list2, variable_list2, 0)
-#     else:
-#         # print(f"local list:{local_list}, variable list: {variable_list}")
-#         return
 
 def generate_write_list(variable_list, usage_array):
 
@@ -31,8 +14,6 @@ def generate_write_list(variable_list, usage_array):
         repeat_count = size // 4 
         write_list.extend([write_count] * repeat_count)
     
-
-
     if len(usage_array) != len(write_list):
         raise ValueError("usage_array and write_list must have the same length.")
     
@@ -46,6 +27,67 @@ def generate_write_list(variable_list, usage_array):
     # print(f"Maximum Value: {max_value}")
 
     return combined_array, max_value
+
+def alternating_crossover(parent1, parent2):
+    child = []
+    used_genes = set()
+    for i in range(len(parent1)):
+        if i % 2 == 0:  
+            if parent1[i] not in used_genes:
+                child.append(parent1[i])
+                used_genes.add(parent1[i])
+        else:  
+            if parent2[i] not in used_genes:
+                child.append(parent2[i])
+                used_genes.add(parent2[i])
+    print(f"parent1:{parent1}, parent2:{parent2}")
+    print(f"child:{child}")
+    return child
+
+def merge_parents(parents):
+    for i in range(10):
+        parent1 = parents[i]
+        parent2 = parents[(i + 1) % 10]
+        # print(f"parent1:{parent1}, parent2:{parent2}")
+        child = alternating_crossover(parent1, parent2)
+        parents.append(child)
+    return parents
+
+def genetic_algorithm(variable_count,variable_list):
+    # parents = []
+    # for i in range(10):
+    #     c1 = []
+    #     while len(c1) < variable_count:
+    #         random_number = random.randint(0, variable_count-1)
+    #         if random_number in c1:
+    #             continue
+    #         c1.append(random_number)
+    #     p1 = []
+    #     for i in c1:
+    #         p1.append(variable_list[i])
+        
+    #     parents.append(p1)
+    # merge_parents(parents)
+    
+    return variable_list
+    
+def find_tree(local_list, variable_list, index):
+    if len(variable_list) > 0:
+        check_list = {}
+        for i in range(len(variable_list)):
+            key = str(variable_list[i][1]) + str(variable_list[i][2])
+            if key in check_list:
+                continue
+            else:
+                check_list[key] = 1
+            variable_list2 = variable_list[:]
+            local_list2 = local_list[:]
+            var_t = variable_list2.pop(i)
+            local_list2.append(var_t)
+            find_tree(local_list2, variable_list2, 0)
+    else:
+        # print(f"local list:{local_list}, variable list: {variable_list}")
+        return
 
 def process_json_file(file_path, output_file):
     try:
@@ -82,22 +124,23 @@ def process_json_file(file_path, output_file):
             
             if 0 <= label < num_of_set:
                 local_addr_size = abs(stack_size // 4)
-                local_addr = [(None, 0) for _ in range(local_addr_size)]  # (variable_name, write_count)
+                local_addr = [(None, 0) for _ in range(local_addr_size)]  # (variable_name, write_count, used_lines, variable_size)
                 usage_array = np.zeros(local_addr_size, dtype=int)  
                 
                 for i in range(len(usage_array)):
                     usage_array[i] = usage_matrix[(label + (i // 16)) % num_of_set, i % 16]
                 
                 current_index = 4 
-                variable_list = []  # List to store variable tuples (name, size)
+                variable_list = []  # List to store variable tuples (name, size, write_count)
                 for variable in function.get('variables', []):
                     variable_name = variable['name']
                     variable_size = variable['size']
                     total_variable_size = function.get('total_variable_size')
                     write_count = len(variable['lines']['write'])
                     used_lines = variable['lines']['write'] + variable['lines']['read']
+                    # variable_count = len(function.get('variables', []))
                     
-                    variable_list.append((variable_name, variable_size, write_count))
+                    variable_list.append((variable_name, write_count,used_lines, variable_size))
                     
                     if variable_size == 8:
                         if current_index + 1 < local_addr_size:
@@ -129,14 +172,20 @@ def process_json_file(file_path, output_file):
                         continue
                     else:
                         temp_list[key] = 1
-                        
-                combined_array, max_value = generate_write_list(variable_list, usage_array)
+                variable_count = len(variable_list)
+                # combined_array, max_value = generate_write_list(variable_list, usage_array)
+                if variable_count < 4 :
+                    find_tree([], variable_list, 0)
+                else:
+                    locatins = genetic_algorithm(variable_count,variable_list)
 
                 
                 # find_tree([], variable_list, 0)
                 
-                for index in range(len(local_addr)):
-                    local_variable = local_addr[index]
+                
+                
+                for index in range(len(locatins)):
+                    local_variable = locatins[index]
                     if local_variable != "depend" and local_variable[0] is not None:
                         for line_p in local_variable[2]:
                             line = line_p - 1
@@ -154,13 +203,13 @@ def process_json_file(file_path, output_file):
                             asm_lines[line] = (' '.join(line_arry)) + "\t\t#this_line_update!"
                             # print(f"==> {asm_lines[line]}")
                 
-                for i in range(len(local_addr)):
-                    if local_addr[i][0] is not None:
-                        if local_addr[i] == "depend":
-                            usage_matrix[(label + (i // 16)) % num_of_set, i % 16] += local_addr[i-1][1]
+                for i in range(len(locatins)):
+                    if locatins[i][0] is not None:
+                        if locatins[i] == "depend":
+                            usage_matrix[(label + (i // 16)) % num_of_set, i % 16] += locatins[i-1][1]
                             # print(f"usage_matrix[{(label + (i // 16)) % num_of_set}, {i % 16}] += {local_addr[i-1][1]}")
                         else:
-                            usage_matrix[(label + (i // 16)) % num_of_set, i % 16] += local_addr[i][1]
+                            usage_matrix[(label + (i // 16)) % num_of_set, i % 16] += locatins[i][1]
                             # print(f"usage_matrix[{(label + (i // 16)) % num_of_set}, {i % 16}] += {local_addr[i][1]}")
                     # else:
                         # print("none!")
@@ -172,8 +221,8 @@ def process_json_file(file_path, output_file):
         with open(output_file, 'w') as out_file:
             for row in usage_matrix:
                 out_file.write('\t'.join(map(str, row)) + '\n')
-            for function_name, local_addr in function_usage_arrays.items():
-                out_file.write(f"{function_name}:\t" + '\t'.join([f"({x[0]}, {x[1]})" for x in local_addr]) + '\n')
+            for function_name, locatins in function_usage_arrays.items():
+                out_file.write(f"{function_name}:\t" + '\t'.join([f"({x[0]}, {x[1]})" for x in locatins]) + '\n')
                 
             out_file.write("\nVariable Details:\n")
             for function_name, variables in variable_details.items():
