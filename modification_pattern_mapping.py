@@ -2,6 +2,8 @@ import json
 import numpy as np
 import random
 
+from Genetic import Genetic
+
 num_of_set = 128 
 num_of_columns = 16
 blk_size = 64
@@ -53,7 +55,7 @@ def merge_parents(parents):
         parents.append(child)
     return parents
 
-def genetic_algorithm(variable_count,variable_list):
+def genetic_algorithm(variable_count,variable_list, usage_array):
     # parents = []
     # for i in range(10):
     #     c1 = []
@@ -68,8 +70,7 @@ def genetic_algorithm(variable_count,variable_list):
         
     #     parents.append(p1)
     # merge_parents(parents)
-    
-    return variable_list
+    return Genetic.find_best(variable_count, variable_list, usage_array)
     
 def find_tree(local_list, variable_list, index):
     if len(variable_list) > 0:
@@ -159,7 +160,7 @@ def process_json_file(file_path, output_file):
                 
                 # Add empty locations to the variable list
                 for i in range(empty_locations):
-                    variable_list.append((f"emptyV{i}", 4, 0))
+                    variable_list.append((f"emptyV{i}", 0, [], 4))
                 
                 variable_details[function_name] = variable_list
                 
@@ -177,42 +178,32 @@ def process_json_file(file_path, output_file):
                 if variable_count < 4 :
                     find_tree([], variable_list, 0)
                 else:
-                    locatins = genetic_algorithm(variable_count,variable_list)
+                    locations = genetic_algorithm(variable_count, variable_list, usage_array)
 
                 
                 # find_tree([], variable_list, 0)
                 
                 
-                
-                for index in range(len(locatins)):
-                    local_variable = locatins[index]
-                    if local_variable != "depend" and local_variable[0] is not None:
-                        for line_p in local_variable[2]:
-                            line = line_p - 1
-                            offset_from_rbp = -((index-3) * 4) - (4 if local_variable[3] == 8 else 0)
-                            target_address = f"{offset_from_rbp}(%rbp)"
-                            # print(f"pre: {asm_lines[line]}, target address = {target_address}, line:{line+1}, on file:{assembly_file}")
-                            line_arry = asm_lines[line].split(' ')
-                            for part in range(len(line_arry)):
-                                if 'rbp' in line_arry[part]:
-                                    if ',' in line_arry[part]:
-                                        line_arry[part] = target_address + ','
-                                    else:
-                                        line_arry[part] = target_address
-                            
-                            asm_lines[line] = (' '.join(line_arry)) + "\t\t#this_line_update!"
-                            # print(f"==> {asm_lines[line]}")
-                
-                for i in range(len(locatins)):
-                    if locatins[i][0] is not None:
-                        if locatins[i] == "depend":
-                            usage_matrix[(label + (i // 16)) % num_of_set, i % 16] += locatins[i-1][1]
-                            # print(f"usage_matrix[{(label + (i // 16)) % num_of_set}, {i % 16}] += {local_addr[i-1][1]}")
-                        else:
-                            usage_matrix[(label + (i // 16)) % num_of_set, i % 16] += locatins[i][1]
-                            # print(f"usage_matrix[{(label + (i // 16)) % num_of_set}, {i % 16}] += {local_addr[i][1]}")
-                    # else:
-                        # print("none!")
+                index = 0
+                for list_index in range(len(locations)):
+                    local_variable = locations[list_index]
+                    for line_p in local_variable[2]:
+                        line = line_p - 1
+                        offset_from_rbp = -((index-3) * 4) - (4 if local_variable[3] == 8 else 0)
+                        target_address = f"{offset_from_rbp}(%rbp)"
+                        line_arry = asm_lines[line].split(' ')
+                        for part in range(len(line_arry)):
+                            if 'rbp' in line_arry[part]:
+                                if ',' in line_arry[part]:
+                                    line_arry[part] = target_address + ','
+                                else:
+                                    line_arry[part] = target_address
+                        asm_lines[line] = (' '.join(line_arry)) + "\t\t#this_line_update!"
+                    
+                    for i in range(local_variable[3] // 4):
+                        usage_matrix[(label + ((index + i) // 16)) % num_of_set, (index + i) % 16] += local_variable[1]
+                        
+                    index += local_variable[3] // 4
                             
                 function_usage_arrays[function_name] = local_addr
             with open(assembly_file[:-2]+"_final.s", 'w') as out_file:
@@ -221,8 +212,8 @@ def process_json_file(file_path, output_file):
         with open(output_file, 'w') as out_file:
             for row in usage_matrix:
                 out_file.write('\t'.join(map(str, row)) + '\n')
-            for function_name, locatins in function_usage_arrays.items():
-                out_file.write(f"{function_name}:\t" + '\t'.join([f"({x[0]}, {x[1]})" for x in locatins]) + '\n')
+            for function_name, locations in function_usage_arrays.items():
+                out_file.write(f"{function_name}:\t" + '\t'.join([f"({x[0]}, {x[1]})" for x in locations]) + '\n')
                 
             out_file.write("\nVariable Details:\n")
             for function_name, variables in variable_details.items():
