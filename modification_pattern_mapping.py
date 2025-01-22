@@ -124,14 +124,13 @@ def process_json_file(file_path, output_file):
                     continue
             
             if 0 <= label < num_of_set:
-                local_addr_size = abs(stack_size // 4)
-                local_addr = [(None, 0) for _ in range(local_addr_size)]  # (variable_name, write_count, used_lines, variable_size)
-                usage_array = np.zeros(local_addr_size, dtype=int)  
+                usage_array = np.zeros((stack_size//4), dtype=int)  
                 
                 for i in range(len(usage_array)):
                     usage_array[i] = usage_matrix[(label + (i // 16)) % num_of_set, i % 16]
                 
-                current_index = 4 
+                current_index = 4
+                unchanged_size = 16
                 variable_list = []  # List to store variable tuples (name, size, write_count)
                 for variable in function.get('variables', []):
                     variable_name = variable['name']
@@ -141,21 +140,22 @@ def process_json_file(file_path, output_file):
                     used_lines = variable['lines']['write'] + variable['lines']['read']
                     # variable_count = len(function.get('variables', []))
                     
-                    variable_list.append((variable_name, write_count,used_lines, variable_size))
+                    if variable_name == "-8(%rbp)":
+                        unchanged_size += 8
+                        print(f"variable:{variable}")
+                        continue
                     
-                    if variable_size == 8:
-                        if current_index + 1 < local_addr_size:
-                            local_addr[current_index] = (variable_name, write_count, used_lines, variable_size)
-                            local_addr[current_index + 1] = "depend"
-                            current_index += 2
-                    elif 0 <= variable_size <= 4:
-                        if current_index < local_addr_size:
-                            local_addr[current_index] = (variable_name, write_count, used_lines, variable_size)
-                            current_index += 1
+                    variable_list.append((variable_name, write_count,used_lines, variable_size))
+                
                 variable_details[function_name] = variable_list
+                usage_array = usage_array[(unchanged_size//4):]
+                
+                print(f"unchange size:{unchanged_size}")
+                print(f"stack_size:{stack_size}")
+                
                 
                 # Calculate A and number of empty locations
-                A = stack_size - total_variable_size
+                A = (stack_size - total_variable_size) - 16
                 empty_locations = A // 4
                 
                 # Add empty locations to the variable list
@@ -178,18 +178,23 @@ def process_json_file(file_path, output_file):
                 if variable_count < 4 :
                     find_tree([], variable_list, 0)
                 else:
+                    sum_v_s = 0
+                    for _v in variable_list:
+                        print(f"name:{_v[0]}, size:{_v[3]/4}")
+                        sum_v_s += _v[3] // 4
+                    print(f"vsum:{sum_v_s}, len us arr:{len(usage_array)}")
                     locations = genetic_algorithm(variable_count, variable_list, usage_array)
 
                 
                 # find_tree([], variable_list, 0)
                 
                 
-                index = 0
+                index = -8
                 for list_index in range(len(locations)):
                     local_variable = locations[list_index]
                     for line_p in local_variable[2]:
                         line = line_p - 1
-                        offset_from_rbp = -((index-3) * 4) - (4 if local_variable[3] == 8 else 0)
+                        offset_from_rbp = index - local_variable[3]
                         target_address = f"{offset_from_rbp}(%rbp)"
                         line_arry = asm_lines[line].split(' ')
                         for part in range(len(line_arry)):
@@ -201,11 +206,10 @@ def process_json_file(file_path, output_file):
                         asm_lines[line] = (' '.join(line_arry)) + "\t\t#this_line_update!"
                     
                     for i in range(local_variable[3] // 4):
-                        usage_matrix[(label + ((index + i) // 16)) % num_of_set, (index + i) % 16] += local_variable[1]
+                        usage_matrix[(label + (((-index//4) + i) // 16)) % num_of_set, ((-index//4) + i) % 16] += local_variable[1]
                         
-                    index += local_variable[3] // 4
+                    index -= local_variable[3]
                             
-                function_usage_arrays[function_name] = local_addr
             with open(assembly_file[:-2]+"_final.s", 'w') as out_file:
                 out_file.write(('\n'.join(asm_lines).replace(' ', '\t')) + '\n')
                 

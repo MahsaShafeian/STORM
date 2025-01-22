@@ -49,6 +49,7 @@ class Genetic:
             write_list.extend([write_count] * repeat_count)
         
         if len(usage_array) != len(write_list):
+            print(f"len usage array: {len(usage_array)}, len wrie list: {len(write_list)}")
             raise ValueError("usage_array and write_list must have the same length.")
         
         write_array = np.array(write_list)
