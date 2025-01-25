@@ -21,7 +21,7 @@ class AssemblyParser:
         self.function_call_counts = {}  # Count of how many times each function is called
         self.loops = {}
         self.function_lines = {}  # Store line numbers for each function
-        self.jump_in_loop_labels = {}
+        self.last_subq = {}
 
 
     def read_files(self, file_paths):
@@ -191,6 +191,7 @@ class AssemblyParser:
                     self.function_lines[current_function] = [line_number]
                     stack_size = 0
                     self.loops[current_function] = []
+                    self.last_subq[current_function] = "None"
 
                 elif '.cfi_endproc' in clean_line and recording_function:
                     recording_function = False
@@ -212,6 +213,9 @@ class AssemblyParser:
 
                         stack_size += self.get_stack_size_change(instruction)
                         self.check_stack_access(instruction, current_function, line_number)
+                
+                    if ("subq" in clean_line) or ("addq" in clean_line) and ("%rsp" in clean_line) and recording_function:
+                        self.last_subq[current_function] = line_number
 
     def get_stack_size_change(self, instruction):
         """Calculate the change in stack size based on stack manipulation instructions."""
@@ -282,11 +286,11 @@ class AssemblyParser:
                 "source_file": self.function_files.get(func_name, ""),
                 "label": self.call_labels.get(func_name, 0),
                 "stack_size": self.stack_frames.get(func_name, ""),
+                "last_subq" : self.last_subq[func_name],
                 "call_count": self.function_call_counts.get(func_name, 0),
                 "total_variable_size": sum(details["size"]for details in self.stack_access.get(func_name, {}).values()),
                 "variables": formatted_variables,
-                "loops": self.loops.get(func_name, []),
-                #  "jump_in_loop_labels": self.jump_in_loop_labels.get(func_name, [])
+                "loops": self.loops.get(func_name, [])
             })
         return json_data
 

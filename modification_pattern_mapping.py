@@ -1,6 +1,8 @@
 import json
 import numpy as np
 import random
+import math
+import re
 
 from Genetic import Genetic
 
@@ -106,7 +108,9 @@ def process_json_file(file_path, output_file):
             function_name = function['function_name']
             label = function['label']
             assembly_file = function.get('source_file')
-            stack_size = function.get('stack_size', 64)
+            stack_size = function.get('stack_size')
+            last_subq = function.get('last_subq')
+            total_variable_size = function.get('total_variable_size')
             
             if not assembly_file:
                 print(f"Assembly files not specified for function {function_name}. Skipping.")
@@ -122,12 +126,8 @@ def process_json_file(file_path, output_file):
                 except FileNotFoundError:
                     print(f"Assembly file '{assembly_file}' not found for function {function_name}. Skipping.")
                     continue
-            
-            if 0 <= label < num_of_set:
-                usage_array = np.zeros((stack_size//4), dtype=int)  
                 
-                for i in range(len(usage_array)):
-                    usage_array[i] = usage_matrix[(label + (i // 16)) % num_of_set, i % 16]
+            if 0 <= label < num_of_set:
                 
                 current_index = 4
                 unchanged_size = 16
@@ -135,27 +135,40 @@ def process_json_file(file_path, output_file):
                 for variable in function.get('variables', []):
                     variable_name = variable['name']
                     variable_size = variable['size']
-                    total_variable_size = function.get('total_variable_size')
                     write_count = len(variable['lines']['write'])
                     used_lines = variable['lines']['write'] + variable['lines']['read']
                     # variable_count = len(function.get('variables', []))
                     
                     if variable_name == "-8(%rbp)":
                         unchanged_size += 8
-                        print(f"variable:{variable}")
+                        # print(f"variable:{variable}")
                         continue
                     
                     variable_list.append((variable_name, write_count,used_lines, variable_size))
                 
+                final_stack_size = 64 * math.ceil((total_variable_size + 16) / 64)
+                usage_array = np.zeros((final_stack_size//4), dtype=int)  
+                
+                for i in range(len(usage_array)):
+                    usage_array[i] = usage_matrix[(label + (i // 16)) % num_of_set, i % 16]
+                
+                # stack_size_realignment
+                last_line= asm_lines[last_subq -1]
+                match = re.search(r'\$(\d+)', last_line)
+                if match:
+                    last_size = int(match.group(1))
+                print(f"last_size:{last_size}")
+                last_stack_size = final_stack_size - (stack_size - last_size)
+                
                 variable_details[function_name] = variable_list
+                
                 usage_array = usage_array[(unchanged_size//4):]
                 
-                print(f"unchange size:{unchanged_size}")
-                print(f"stack_size:{stack_size}")
-                
+                # print(f"unchange size:{unchanged_size}")
+                # print(f"stack_size:{stack_size}")
                 
                 # Calculate A and number of empty locations
-                A = (stack_size - total_variable_size) - 16
+                A = (final_stack_size - total_variable_size) - 16
                 empty_locations = A // 4
                 
                 # Add empty locations to the variable list
@@ -180,9 +193,9 @@ def process_json_file(file_path, output_file):
                 else:
                     sum_v_s = 0
                     for _v in variable_list:
-                        print(f"name:{_v[0]}, size:{_v[3]/4}")
+                        # print(f"name:{_v[0]}, size:{_v[3]/4}")
                         sum_v_s += _v[3] // 4
-                    print(f"vsum:{sum_v_s}, len us arr:{len(usage_array)}")
+                    # print(f"vsum:{sum_v_s}, len us arr:{len(usage_array)}")
                     locations = genetic_algorithm(variable_count, variable_list, usage_array)
 
                 
@@ -209,7 +222,7 @@ def process_json_file(file_path, output_file):
                         usage_matrix[(label + (((-index//4) + i) // 16)) % num_of_set, ((-index//4) + i) % 16] += local_variable[1]
                         
                     index -= local_variable[3]
-                            
+                asm_lines[last_subq -1] = f"\tsubq\t${last_stack_size}, %rsp\t\t#this_line_update!"
             with open(assembly_file[:-2]+"_final.s", 'w') as out_file:
                 out_file.write(('\n'.join(asm_lines).replace(' ', '\t')) + '\n')
                 
