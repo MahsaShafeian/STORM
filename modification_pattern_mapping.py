@@ -147,9 +147,24 @@ def process_json_file(file_path, output_file):
                     variable_list.append((variable_name, write_count,used_lines, variable_size))
                 
                 final_stack_size = 64 * math.ceil((total_variable_size + 16) / 64)
-                usage_array = np.zeros((final_stack_size//4), dtype=int)  
+                # Calculate A and number of empty locations
+                A = (final_stack_size - total_variable_size) - 16
+                empty_locations = A // 4
                 
-                for i in range(len(usage_array)):
+                # Add empty locations to the variable list
+                for i in range(empty_locations):
+                    variable_list.append((f"emptyV{i}", 0, [], 4))
+                
+                variable_details[function_name] = variable_list
+                
+                len_usage_array = 0
+                for variable in variable_list:
+                    _, write_count, _, size = variable
+                    repeat_count = size // 4 
+                    len_usage_array += repeat_count
+                
+                usage_array = np.zeros(len_usage_array, dtype=int)
+                for i in range(len_usage_array):
                     usage_array[i] = usage_matrix[(label + (i // 16)) % num_of_set, i % 16]
                 
                 # stack_size_realignment
@@ -166,16 +181,6 @@ def process_json_file(file_path, output_file):
                 
                 # print(f"unchange size:{unchanged_size}")
                 # print(f"stack_size:{stack_size}")
-                
-                # Calculate A and number of empty locations
-                A = (final_stack_size - total_variable_size) - 16
-                empty_locations = A // 4
-                
-                # Add empty locations to the variable list
-                for i in range(empty_locations):
-                    variable_list.append((f"emptyV{i}", 0, [], 4))
-                
-                variable_details[function_name] = variable_list
                 
                 
                 temp_list = {}
