@@ -1,0 +1,1172 @@
+[
+    {
+        "function_name": "main",
+        "source_file": "/home/mahsa/Documents/MiBench_project/FFT/main_alignment.s",
+        "label": 0,
+        "stack_size": 128,
+        "last_subq": 34,
+        "call_count": 0,
+        "total_variable_size": 112,
+        "variables": [
+            {
+                "name": "-84(%rbp)",
+                "lines": {
+                    "read": [
+                        38,
+                        56
+                    ],
+                    "write": [
+                        35
+                    ]
+                },
+                "size": 16
+            },
+            {
+                "name": "-96(%rbp)",
+                "lines": {
+                    "read": [
+                        58,
+                        71,
+                        77
+                    ],
+                    "write": [
+                        36
+                    ]
+                },
+                "size": 12
+            },
+            {
+                "name": "-60(%rbp)",
+                "lines": {
+                    "read": [
+                        298
+                    ],
+                    "write": [
+                        37,
+                        69
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-56(%rbp)",
+                "lines": {
+                    "read": [
+                        85,
+                        90,
+                        95,
+                        100,
+                        292,
+                        299,
+                        327,
+                        353
+                    ],
+                    "write": [
+                        76
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-52(%rbp)",
+                "lines": {
+                    "read": [
+                        105,
+                        110,
+                        157,
+                        287
+                    ],
+                    "write": [
+                        82
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-48(%rbp)",
+                "lines": {
+                    "read": [
+                        164,
+                        177,
+                        221,
+                        229,
+                        273,
+                        297,
+                        357
+                    ],
+                    "write": [
+                        89
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-40(%rbp)",
+                "lines": {
+                    "read": [
+                        280,
+                        296,
+                        360
+                    ],
+                    "write": [
+                        94
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-32(%rbp)",
+                "lines": {
+                    "read": [
+                        295,
+                        313,
+                        363
+                    ],
+                    "write": [
+                        99
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-24(%rbp)",
+                "lines": {
+                    "read": [
+                        294,
+                        339,
+                        366
+                    ],
+                    "write": [
+                        104
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-16(%rbp)",
+                "lines": {
+                    "read": [
+                        131,
+                        185,
+                        237,
+                        369
+                    ],
+                    "write": [
+                        109
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        149,
+                        193,
+                        245,
+                        372
+                    ],
+                    "write": [
+                        114
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-68(%rbp)",
+                "lines": {
+                    "read": [
+                        129,
+                        147,
+                        154,
+                        156,
+                        162,
+                        175,
+                        196,
+                        219,
+                        227,
+                        248,
+                        271,
+                        278,
+                        289,
+                        291,
+                        311,
+                        324,
+                        326,
+                        337,
+                        350,
+                        352
+                    ],
+                    "write": [
+                        115,
+                        159,
+                        308,
+                        334
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-64(%rbp)",
+                "lines": {
+                    "read": [
+                        183,
+                        191,
+                        235,
+                        243,
+                        284,
+                        286
+                    ],
+                    "write": [
+                        168
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-104(%rbp)",
+                "lines": {
+                    "read": [
+                        218,
+                        270
+                    ],
+                    "write": [
+                        182,
+                        234
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-112(%rbp)",
+                "lines": {
+                    "read": [
+                        217,
+                        269
+                    ],
+                    "write": [
+                        190,
+                        242
+                    ]
+                },
+                "size": 8
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L2",
+                "start_line": 55,
+                "end_line": 39,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": 2,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L3",
+                "start_line": 70,
+                "end_line": 57,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": 4,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L5",
+                "start_line": 117,
+                "end_line": 158,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 4,
+                "iterations": 5
+            },
+            {
+                "loop_label": ".L9",
+                "start_line": 202,
+                "end_line": 198,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 4,
+                "iterations": 5
+            },
+            {
+                "loop_label": ".L12",
+                "start_line": 254,
+                "end_line": 250,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 4,
+                "iterations": 5
+            },
+            {
+                "loop_label": ".L14",
+                "start_line": 170,
+                "end_line": 288,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 4,
+                "iterations": 5
+            },
+            {
+                "loop_label": ".L15",
+                "start_line": 161,
+                "end_line": 293,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 4,
+                "iterations": 5
+            },
+            {
+                "loop_label": ".L17",
+                "start_line": 310,
+                "end_line": 328,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 4,
+                "iterations": 5
+            },
+            {
+                "loop_label": ".L19",
+                "start_line": 336,
+                "end_line": 354,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 4,
+                "iterations": 5
+            }
+        ]
+    },
+    {
+        "function_name": "IsPowerOfTwo",
+        "source_file": "/home/mahsa/Documents/MiBench_project/FFT/fftmisc_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 14,
+        "call_count": 0,
+        "total_variable_size": 4,
+        "variables": [
+            {
+                "name": "-4(%rbp)",
+                "lines": {
+                    "read": [
+                        16,
+                        21,
+                        23
+                    ],
+                    "write": [
+                        15
+                    ]
+                },
+                "size": 4
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L2",
+                "start_line": 20,
+                "end_line": 17,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "NumberOfBitsNeeded",
+        "source_file": "/home/mahsa/Documents/MiBench_project/FFT/fftmisc_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 53,
+        "call_count": 0,
+        "total_variable_size": 20,
+        "variables": [
+            {
+                "name": "-20(%rbp)",
+                "lines": {
+                    "read": [
+                        55,
+                        58,
+                        74
+                    ],
+                    "write": [
+                        54
+                    ]
+                },
+                "size": 16
+            },
+            {
+                "name": "-4(%rbp)",
+                "lines": {
+                    "read": [
+                        69,
+                        77,
+                        80
+                    ],
+                    "write": [
+                        67
+                    ]
+                },
+                "size": 4
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L6",
+                "start_line": 66,
+                "end_line": 56,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "ReverseBits",
+        "source_file": "/home/mahsa/Documents/MiBench_project/FFT/fftmisc_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 100,
+        "call_count": 0,
+        "total_variable_size": 24,
+        "variables": [
+            {
+                "name": "-20(%rbp)",
+                "lines": {
+                    "read": [
+                        110
+                    ],
+                    "write": [
+                        101
+                    ]
+                },
+                "size": 12
+            },
+            {
+                "name": "-24(%rbp)",
+                "lines": {
+                    "read": [
+                        118
+                    ],
+                    "write": [
+                        102
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-4(%rbp)",
+                "lines": {
+                    "read": [
+                        104,
+                        108,
+                        120
+                    ],
+                    "write": [
+                        103,
+                        113
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        115,
+                        117
+                    ],
+                    "write": [
+                        105
+                    ]
+                },
+                "size": 4
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L13",
+                "start_line": 107,
+                "end_line": 119,
+                "initial_value": 0,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "Index_to_frequency",
+        "source_file": "/home/mahsa/Documents/MiBench_project/FFT/fftmisc_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 138,
+        "call_count": 0,
+        "total_variable_size": 8,
+        "variables": [
+            {
+                "name": "-4(%rbp)",
+                "lines": {
+                    "read": [
+                        142,
+                        147,
+                        166,
+                        184,
+                        204
+                    ],
+                    "write": [
+                        139
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        141,
+                        149,
+                        151,
+                        185
+                    ],
+                    "write": [
+                        140
+                    ]
+                },
+                "size": 4
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L16",
+                "start_line": 146,
+                "end_line": 143,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L18",
+                "start_line": 183,
+                "end_line": 150,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L19",
+                "start_line": 157,
+                "end_line": 153,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L21",
+                "start_line": 172,
+                "end_line": 168,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L23",
+                "start_line": 192,
+                "end_line": 188,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L25",
+                "start_line": 210,
+                "end_line": 206,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "CheckPointer",
+        "source_file": "/home/mahsa/Documents/MiBench_project/FFT/fourierf_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 18,
+        "call_count": 0,
+        "total_variable_size": 16,
+        "variables": [
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        21
+                    ],
+                    "write": [
+                        19
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-16(%rbp)",
+                "lines": {
+                    "read": [
+                        24
+                    ],
+                    "write": [
+                        20
+                    ]
+                },
+                "size": 8
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L3",
+                "start_line": 32,
+                "end_line": 22,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "fft_float",
+        "source_file": "/home/mahsa/Documents/MiBench_project/FFT/fourierf_alignment.s",
+        "label": 0,
+        "stack_size": 256,
+        "last_subq": 412,
+        "call_count": 0,
+        "total_variable_size": 216,
+        "variables": [
+            {
+                "name": "-180(%rbp)",
+                "lines": {
+                    "read": [
+                        74,
+                        80,
+                        111,
+                        153,
+                        348,
+                        355,
+                        359,
+                        407
+                    ],
+                    "write": [
+                        63
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-184(%rbp)",
+                "lines": {
+                    "read": [
+                        89,
+                        357
+                    ],
+                    "write": [
+                        64
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-192(%rbp)",
+                "lines": {
+                    "read": [
+                        96,
+                        126
+                    ],
+                    "write": [
+                        65
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-200(%rbp)",
+                "lines": {
+                    "read": [
+                        134,
+                        138
+                    ],
+                    "write": [
+                        66
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-208(%rbp)",
+                "lines": {
+                    "read": [
+                        101,
+                        130,
+                        253,
+                        279,
+                        288,
+                        295,
+                        314,
+                        321,
+                        380,
+                        387
+                    ],
+                    "write": [
+                        67
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-216(%rbp)",
+                "lines": {
+                    "read": [
+                        106,
+                        147,
+                        261,
+                        271,
+                        301,
+                        308,
+                        327,
+                        334,
+                        393,
+                        400
+                    ],
+                    "write": [
+                        68
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        411
+                    ],
+                    "write": [
+                        70
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-144(%rbp)",
+                "lines": {
+                    "read": [
+                        91,
+                        174
+                    ],
+                    "write": [
+                        73,
+                        94
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-152(%rbp)",
+                "lines": {
+                    "read": [
+                        118
+                    ],
+                    "write": [
+                        114
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-172(%rbp)",
+                "lines": {
+                    "read": [
+                        119,
+                        124,
+                        136,
+                        150,
+                        152,
+                        223,
+                        345,
+                        347,
+                        378,
+                        385,
+                        391,
+                        398,
+                        404,
+                        406
+                    ],
+                    "write": [
+                        115,
+                        212,
+                        375
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-168(%rbp)",
+                "lines": {
+                    "read": [
+                        128,
+                        145,
+                        246,
+                        286,
+                        299,
+                        312,
+                        319,
+                        325,
+                        332,
+                        338
+                    ],
+                    "write": [
+                        123,
+                        224
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-156(%rbp)",
+                "lines": {
+                    "read": [
+                        247,
+                        342
+                    ],
+                    "write": [
+                        155,
+                        351
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-160(%rbp)",
+                "lines": {
+                    "read": [
+                        159,
+                        344,
+                        350,
+                        354
+                    ],
+                    "write": [
+                        156
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-128(%rbp)",
+                "lines": {
+                    "read": [
+                        177,
+                        185,
+                        193,
+                        201
+                    ],
+                    "write": [
+                        176
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-120(%rbp)",
+                "lines": {
+                    "read": [
+                        219
+                    ],
+                    "write": [
+                        184
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-112(%rbp)",
+                "lines": {
+                    "read": [
+                        221
+                    ],
+                    "write": [
+                        192
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-104(%rbp)",
+                "lines": {
+                    "read": [
+                        215
+                    ],
+                    "write": [
+                        200
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-96(%rbp)",
+                "lines": {
+                    "read": [
+                        209,
+                        217
+                    ],
+                    "write": [
+                        208
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-88(%rbp)",
+                "lines": {
+                    "read": [
+                        229,
+                        238
+                    ],
+                    "write": [
+                        211
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-48(%rbp)",
+                "lines": {
+                    "read": [
+                        230
+                    ],
+                    "write": [
+                        216,
+                        234
+                    ]
+                },
+                "size": 16
+            },
+            {
+                "name": "-56(%rbp)",
+                "lines": {
+                    "read": [
+                        228,
+                        233
+                    ],
+                    "write": [
+                        218,
+                        236
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-16(%rbp)",
+                "lines": {
+                    "read": [
+                        239
+                    ],
+                    "write": [
+                        220,
+                        243
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-24(%rbp)",
+                "lines": {
+                    "read": [
+                        237,
+                        242
+                    ],
+                    "write": [
+                        222,
+                        245
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-164(%rbp)",
+                "lines": {
+                    "read": [
+                        339,
+                        341
+                    ],
+                    "write": [
+                        225
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-64(%rbp)",
+                "lines": {
+                    "read": [
+                        235,
+                        250,
+                        268
+                    ],
+                    "write": [
+                        232
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-32(%rbp)",
+                "lines": {
+                    "read": [
+                        244,
+                        258,
+                        276
+                    ],
+                    "write": [
+                        241
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-148(%rbp)",
+                "lines": {
+                    "read": [
+                        251,
+                        259,
+                        269,
+                        277,
+                        293,
+                        306
+                    ],
+                    "write": [
+                        249
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-80(%rbp)",
+                "lines": {
+                    "read": [
+                        292,
+                        318
+                    ],
+                    "write": [
+                        267
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-72(%rbp)",
+                "lines": {
+                    "read": [
+                        305,
+                        331
+                    ],
+                    "write": [
+                        285
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-136(%rbp)",
+                "lines": {
+                    "read": [
+                        384,
+                        397
+                    ],
+                    "write": [
+                        374
+                    ]
+                },
+                "size": 8
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L5",
+                "start_line": 88,
+                "end_line": 78,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L10",
+                "start_line": 117,
+                "end_line": 154,
+                "initial_value": 0,
+                "step_value": null,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L12",
+                "start_line": 165,
+                "end_line": 161,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L16",
+                "start_line": 227,
+                "end_line": 343,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L17",
+                "start_line": 214,
+                "end_line": 349,
+                "initial_value": 1,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L18",
+                "start_line": 158,
+                "end_line": 356,
+                "initial_value": 10,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L20",
+                "start_line": 365,
+                "end_line": 361,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L23",
+                "start_line": 377,
+                "end_line": 408,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": null,
+                "iterations": null
+            }
+        ]
+    }
+]
