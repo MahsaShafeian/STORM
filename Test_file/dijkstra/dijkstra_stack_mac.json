@@ -1,0 +1,453 @@
+[
+    {
+        "function_name": "print_path",
+        "source_file": "/Users/am.a/Documents/Uni/Storage/STORM/Test_file/dijkstra/dijkstra_small_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 79,
+        "call_count": 0,
+        "total_variable_size": 12,
+        "variables": [
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        85,
+                        93,
+                        96
+                    ],
+                    "write": [
+                        80
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-12(%rbp)",
+                "lines": {
+                    "read": [
+                        82,
+                        90,
+                        101
+                    ],
+                    "write": [
+                        81
+                    ]
+                },
+                "size": 4
+            }
+        ],
+        "loops": []
+    },
+    {
+        "function_name": "enqueue",
+        "source_file": "/Users/am.a/Documents/Uni/Storage/STORM/Test_file/dijkstra/dijkstra_small_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 132,
+        "call_count": 0,
+        "total_variable_size": 28,
+        "variables": [
+            {
+                "name": "-20(%rbp)",
+                "lines": {
+                    "read": [
+                        154
+                    ],
+                    "write": [
+                        133
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-24(%rbp)",
+                "lines": {
+                    "read": [
+                        157
+                    ],
+                    "write": [
+                        134
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-28(%rbp)",
+                "lines": {
+                    "read": [
+                        160
+                    ],
+                    "write": [
+                        135
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        141,
+                        153,
+                        156,
+                        159,
+                        162,
+                        166,
+                        179
+                    ],
+                    "write": [
+                        138
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-16(%rbp)",
+                "lines": {
+                    "read": [
+                        164,
+                        170,
+                        174,
+                        178
+                    ],
+                    "write": [
+                        140,
+                        172
+                    ]
+                },
+                "size": 8
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L4",
+                "start_line": 152,
+                "end_line": 142,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": 0,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L7",
+                "start_line": 173,
+                "end_line": 165,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": 0,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L8",
+                "start_line": 169,
+                "end_line": 177,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": 0,
+                "iterations": null
+            }
+        ]
+    },
+    {
+        "function_name": "dequeue",
+        "source_file": "/Users/am.a/Documents/Uni/Storage/STORM/Test_file/dijkstra/dijkstra_small_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 203,
+        "call_count": 0,
+        "total_variable_size": 40,
+        "variables": [
+            {
+                "name": "-24(%rbp)",
+                "lines": {
+                    "read": [
+                        214
+                    ],
+                    "write": [
+                        204
+                    ]
+                },
+                "size": 16
+            },
+            {
+                "name": "-32(%rbp)",
+                "lines": {
+                    "read": [
+                        218
+                    ],
+                    "write": [
+                        205
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-40(%rbp)",
+                "lines": {
+                    "read": [
+                        222
+                    ],
+                    "write": [
+                        206
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        227
+                    ],
+                    "write": [
+                        208
+                    ]
+                },
+                "size": 8
+            }
+        ],
+        "loops": []
+    },
+    {
+        "function_name": "qcount",
+        "source_file": "/Users/am.a/Documents/Uni/Storage/STORM/Test_file/dijkstra/dijkstra_small_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 252,
+        "call_count": 0,
+        "total_variable_size": 0,
+        "variables": [],
+        "loops": []
+    },
+    {
+        "function_name": "dijkstra",
+        "source_file": "/Users/am.a/Documents/Uni/Storage/STORM/Test_file/dijkstra/dijkstra_small_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 280,
+        "call_count": 0,
+        "total_variable_size": 8,
+        "variables": [
+            {
+                "name": "-4(%rbp)",
+                "lines": {
+                    "read": [
+                        303,
+                        311,
+                        316,
+                        321
+                    ],
+                    "write": [
+                        281
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [
+                        304,
+                        408,
+                        422
+                    ],
+                    "write": [
+                        282
+                    ]
+                },
+                "size": 4
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L16",
+                "start_line": 285,
+                "end_line": 302,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 99,
+                "iterations": 100
+            },
+            {
+                "loop_label": ".L17",
+                "start_line": 310,
+                "end_line": 305,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 99,
+                "iterations": 100
+            },
+            {
+                "loop_label": ".L21",
+                "start_line": 396,
+                "end_line": 372,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 9999,
+                "iterations": 10000
+            },
+            {
+                "loop_label": ".L23",
+                "start_line": 337,
+                "end_line": 403,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 99,
+                "iterations": 100
+            },
+            {
+                "loop_label": ".L24",
+                "start_line": 327,
+                "end_line": 407,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 99,
+                "iterations": 100
+            }
+        ]
+    },
+    {
+        "function_name": "main",
+        "source_file": "/Users/am.a/Documents/Uni/Storage/STORM/Test_file/dijkstra/dijkstra_small_alignment.s",
+        "label": 0,
+        "stack_size": 64,
+        "last_subq": 459,
+        "call_count": 0,
+        "total_variable_size": 48,
+        "variables": [
+            {
+                "name": "-36(%rbp)",
+                "lines": {
+                    "read": [
+                        465
+                    ],
+                    "write": [
+                        460
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-48(%rbp)",
+                "lines": {
+                    "read": [
+                        482
+                    ],
+                    "write": [
+                        461
+                    ]
+                },
+                "size": 12
+            },
+            {
+                "name": "-8(%rbp)",
+                "lines": {
+                    "read": [],
+                    "write": [
+                        463
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-16(%rbp)",
+                "lines": {
+                    "read": [
+                        497
+                    ],
+                    "write": [
+                        489
+                    ]
+                },
+                "size": 8
+            },
+            {
+                "name": "-24(%rbp)",
+                "lines": {
+                    "read": [
+                        506,
+                        522,
+                        524,
+                        542,
+                        546,
+                        549
+                    ],
+                    "write": [
+                        490,
+                        526
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-20(%rbp)",
+                "lines": {
+                    "read": [
+                        504,
+                        518,
+                        520,
+                        530,
+                        541,
+                        547
+                    ],
+                    "write": [
+                        493,
+                        527,
+                        540
+                    ]
+                },
+                "size": 4
+            },
+            {
+                "name": "-28(%rbp)",
+                "lines": {
+                    "read": [
+                        496,
+                        503
+                    ],
+                    "write": []
+                },
+                "size": 4
+            }
+        ],
+        "loops": [
+            {
+                "loop_label": ".L26",
+                "start_line": 481,
+                "end_line": 466,
+                "initial_value": null,
+                "step_value": null,
+                "final_value": 1,
+                "iterations": null
+            },
+            {
+                "loop_label": ".L29",
+                "start_line": 495,
+                "end_line": 521,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 99,
+                "iterations": 100
+            },
+            {
+                "loop_label": ".L30",
+                "start_line": 492,
+                "end_line": 525,
+                "initial_value": 0,
+                "step_value": 1,
+                "final_value": 99,
+                "iterations": 100
+            },
+            {
+                "loop_label": ".L32",
+                "start_line": 529,
+                "end_line": 550,
+                "initial_value": 50,
+                "step_value": 1,
+                "final_value": 19,
+                "iterations": -30
+            }
+        ]
+    }
+]
