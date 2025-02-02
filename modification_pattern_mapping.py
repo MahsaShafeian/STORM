@@ -163,6 +163,7 @@ def process_json_file(file_path, output_file):
                     repeat_count = size // 4 
                     len_usage_array += repeat_count
                 
+                len_usage_array += unchanged_size // 4
                 usage_array = np.zeros(len_usage_array, dtype=int)
                 for i in range(len_usage_array):
                     usage_array[i] = usage_matrix[(label + (i // 16)) % num_of_set, i % 16]
