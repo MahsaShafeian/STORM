@@ -37,7 +37,6 @@ def modify_assembly_file(input_path, output_path):
             if '.cfi_endproc' in line and inside_function:
                 inside_function = False
                 
-                # اگر در خطوط نهایی نیست، اضافه کن
                 if not modified_lines or '.cfi_endproc' not in modified_lines[-1:]:
                     function_lines.append(line)
 
@@ -54,7 +53,6 @@ def modify_assembly_file(input_path, output_path):
             if not inside_function:
                 modified_lines.append(line)
 
-        # حذف خطوط تکراری .cfi_endproc
         cleaned_lines = []
         for line in modified_lines:
             if line.strip() == '.cfi_endproc' and (cleaned_lines and cleaned_lines[-1].strip() == '.cfi_endproc'):
@@ -159,14 +157,14 @@ def replace_popq_with_leave(input_path, output_path):
 
         modified_lines = []
         for line in lines:
-            # Check and replace 'popq %rbp' with 'leave'
-            if "popq" in line:
+            if "add" in line and "rsp" in line:
+                continue 
+            if "pop" in line and "%rbp" in line:
                 print(f"Replacing: {line.strip()} -> leave")
                 modified_lines.append("    leave\n")
             else:
                 modified_lines.append(line)
 
-        # Write the modified lines to the output file
         with open(output_path, 'w') as f:
             f.writelines(modified_lines)
 
@@ -240,38 +238,33 @@ def remove_stack_modifying_loop(input_path, output_path):
         modified_lines = lines[:]
         changes_made = False
 
-        # شناسایی لیبل‌ها
         for i, line in enumerate(lines):
             match = re.match(r'^(\.L\w+):', line.strip())
             if match:
                 label = match.group(1)
                 labels[label] = i
 
-        stack_modifying_found = False  # متغیر برای بررسی تغییرات استک
-        insertion_point = None  # نقطه درج دستور جدید
+        stack_modifying_found = False 
+        insertion_point = None 
 
         for i, line in enumerate(lines):
             clean_line = line.strip()
 
-            # شناسایی لوپ
             if any(jmp in clean_line for jmp in ["jmp", "jne", "je", "jg", "jl", "loop"]):
                 match = re.search(r'(\.L\w+)', clean_line)
                 if match:
                     target_label = match.group(1)
                     if target_label in labels and labels[target_label] < i:
-                        # محدوده لوپ
                         start_line = labels[target_label]
                         loop_instructions = lines[start_line:i]
 
-                        # بررسی تغییرات استک در لوپ
                         stack_modifying = any(
                             re.search(r'\b(subq|addq)\s+\$[-+]?\d+,\s*%rsp', instr.strip())
                             for instr in loop_instructions
                         )
                         if stack_modifying:
-                            stack_modifying_found = True  # تغییرات استک پیدا شده است
+                            stack_modifying_found = True  
 
-                            # پیدا کردن آخرین دسترسی به %rbp در کل تابع
                             last_rbp_access = None
                             rbp_offsets = []
                             for j in range(len(lines)):
@@ -284,26 +277,21 @@ def remove_stack_modifying_loop(input_path, output_path):
                                         continue
 
                             if rbp_offsets:
-                                # محاسبه آخرین مکان دسترسی به %rbp
-                                stack_size = -min(rbp_offsets)  # منفی از کوچکترین آفست برای پیدا کردن استک
+                                stack_size = -min(rbp_offsets) 
                             else:
-                                stack_size = 0  # اگر هیچ دسترسی به %rbp پیدا نشد
+                                stack_size = 0  
 
-                            # حذف لوپ
                             for j in range(start_line, i + 1):
                                 modified_lines[j] = ''
 
-                            # اضافه کردن دستور جدید دقیقاً به جای لوپ
                             new_instructions = [
-                              # مقدار محاسبه شده stack_size
                                 f"    subq    ${stack_size}, %rsp\n"
                             ]
                             modified_lines.insert(start_line, ''.join(new_instructions))
-                            insertion_point = start_line + len(new_instructions)  # نقطه درج دستور جدید
+                            insertion_point = start_line + len(new_instructions) 
                             changes_made = True
                             print(f"Loop removed and replaced with stack adjustment at line {start_line + 1} with stack size: {stack_size}")
 
-        # در صورتی که تغییرات استک پیدا شده باشد، دستور orq $0, (%rsp) به همان نقطه اضافه می‌شود
         if stack_modifying_found and insertion_point is not None:
             modified_lines.insert(insertion_point, "    orq     $0, (%rsp)\n")
             print(f"Added 'orq $0, (%rsp)' after stack adjustment at line {insertion_point + 1}")

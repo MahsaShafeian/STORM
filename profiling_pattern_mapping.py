@@ -214,7 +214,7 @@ class AssemblyParser:
                         stack_size += self.get_stack_size_change(instruction)
                         self.check_stack_access(instruction, current_function, line_number)
                 
-                    if ("subq" in clean_line) or ("addq" in clean_line) and ("%rsp" in clean_line) and recording_function:
+                    if (("subq" in clean_line) or ("addq" in clean_line)) and ("%rsp" in clean_line) and recording_function:
                         self.last_subq[current_function] = line_number
 
     def get_stack_size_change(self, instruction):
@@ -232,18 +232,31 @@ class AssemblyParser:
         """Check if an instruction writes to or reads from the stack."""
         opcode, operands, operand_sizes = instruction
 
-        if len(operands) > 1:
+        if len(operands) > 0:
             for i, op in enumerate(operands):
                 match = re.match(r'(-\d+\(%(rbp|rsp))', op)
-                # print(f"matched {match}")
                 if match:
                     address = match.group(1)
-                    action = 'write' if i == 1 and opcode.startswith('mov') else 'read'
-                    size = operand_sizes[i]
+                
+                    if i == 1:
+                        action = 'write'
+                        if opcode.startswith('cmp'):
+                            action = 'read'
+                    elif opcode.startswith('mov') and i == 1:
+                        action = 'write'
+                    elif opcode.startswith('fstp'):
+                        action = 'write'
+                    elif opcode.startswith('fld'):
+                        action = 'read'
+                    else:
+                        action = 'read'
+                
+                    # size = operand_sizes[i] if i < len(operand_sizes) else None
+                
                     if address not in self.stack_access[current_function]:
                         self.stack_access[current_function][address] = {
                             "lines": {"read": [], "write": []},
-                            "size": size
+                            # "size": size
                         }
                     self.stack_access[current_function][address]["lines"][action].append(line_number)
 
@@ -255,19 +268,33 @@ class AssemblyParser:
             self.assign_labels(start + self.stack_frames[func_name], f)
 
     def calculate_variable_distances(self):
-        """Calculate distances between each variable and the closest lower variable."""
+        """Calculate distances between each variable and the closest lower variable, 
+        or from 0 if it's the only variable."""
         for func_name, variables in self.stack_access.items():
             sorted_addresses = sorted(variables.keys(), key=lambda x: int(re.search(r'-\d+', x).group()))
-            for i, address in enumerate(sorted_addresses):
-                if i + 1 < len(sorted_addresses):
+            if len(sorted_addresses) == 1:
+                address = sorted_addresses[0]
+                offset = abs(int(re.search(r'-\d+', address).group()))
+                remainder = offset % 4
+                if remainder != 0:
+                    self.stack_access[func_name][address]["size"] = offset + (4 - remainder)
+                else:
+                    self.stack_access[func_name][address]["size"] = offset
+            else:
+                for i, address in enumerate(sorted_addresses):
                     current_offset = int(re.search(r'-\d+', address).group())
-                    next_offset = int(re.search(r'-\d+', sorted_addresses[i + 1]).group())
-                    distance = abs(current_offset - next_offset)
-                    remainder = distance % 4
-                    if distance % 4 != 0 :
-                        self.stack_access[func_name][address]["size"] = (distance + (4 - remainder))
+                    if i + 1 < len(sorted_addresses):
+                        next_offset = int(re.search(r'-\d+', sorted_addresses[i + 1]).group())
+                        distance = abs(current_offset - next_offset)
                     else:
-                        self.stack_access[func_name][address]["size"] = distance 
+                        distance = abs(current_offset)  # Distance from 0 for the last variable
+                
+                    remainder = distance % 4
+                    if remainder != 0:
+                        self.stack_access[func_name][address]["size"] = distance + (4 - remainder)
+                    else:
+                        self.stack_access[func_name][address]["size"] = distance
+
 
     def get_json_data(self):
         """Organize the data in JSON format with stack read/write access."""
