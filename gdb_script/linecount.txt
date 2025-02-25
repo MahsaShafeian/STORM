@@ -1,0 +1,693 @@
+Registering GDB command: count_asm
+Registering GDB command: count_asm
+Starting assembly instruction counting...
+Setting breakpoint at 0x00000000004017f5 for instruction: endbr64
+Setting breakpoint at 0x00000000004017f9 for instruction: push   %rbp
+Setting breakpoint at 0x00000000004017fa for instruction: mov    %rsp,%rbp
+Setting breakpoint at 0x00000000004017fd for instruction: sub    $0xd0,%rsp
+Setting breakpoint at 0x0000000000401804 for instruction: mov    %fs:0x28,%rax
+Setting breakpoint at 0x000000000040180d for instruction: mov    %rax,-0x8(%rbp)
+Setting breakpoint at 0x0000000000401811 for instruction: xor    %eax,%eax
+Setting breakpoint at 0x0000000000401813 for instruction: movsd  0xa08dd(%rip),%xmm0        # 0x4a20f8
+Setting breakpoint at 0x000000000040181b for instruction: movsd  %xmm0,-0xc0(%rbp)
+Setting breakpoint at 0x0000000000401823 for instruction: movsd  0xa08d5(%rip),%xmm0        # 0x4a2100
+Setting breakpoint at 0x000000000040182b for instruction: movsd  %xmm0,-0xb8(%rbp)
+Setting breakpoint at 0x0000000000401833 for instruction: movsd  0xa08cd(%rip),%xmm0        # 0x4a2108
+Setting breakpoint at 0x000000000040183b for instruction: movsd  %xmm0,-0xb0(%rbp)
+Setting breakpoint at 0x0000000000401843 for instruction: movsd  0xa08c5(%rip),%xmm0        # 0x4a2110
+Setting breakpoint at 0x000000000040184b for instruction: movsd  %xmm0,-0xa8(%rbp)
+Setting breakpoint at 0x0000000000401853 for instruction: movsd  0xa089d(%rip),%xmm0        # 0x4a20f8
+Setting breakpoint at 0x000000000040185b for instruction: movsd  %xmm0,-0x98(%rbp)
+Setting breakpoint at 0x0000000000401863 for instruction: movsd  0xa08ad(%rip),%xmm0        # 0x4a2118
+Setting breakpoint at 0x000000000040186b for instruction: movsd  %xmm0,-0x90(%rbp)
+Setting breakpoint at 0x0000000000401873 for instruction: movsd  0xa08a5(%rip),%xmm0        # 0x4a2120
+Setting breakpoint at 0x000000000040187b for instruction: movsd  %xmm0,-0x88(%rbp)
+Setting breakpoint at 0x0000000000401883 for instruction: movsd  0xa0885(%rip),%xmm0        # 0x4a2110
+Setting breakpoint at 0x000000000040188b for instruction: movsd  %xmm0,-0x80(%rbp)
+Setting breakpoint at 0x0000000000401890 for instruction: movsd  0xa0860(%rip),%xmm0        # 0x4a20f8
+Setting breakpoint at 0x0000000000401898 for instruction: movsd  %xmm0,-0x78(%rbp)
+Setting breakpoint at 0x000000000040189d for instruction: movsd  0xa0883(%rip),%xmm0        # 0x4a2128
+Setting breakpoint at 0x00000000004018a5 for instruction: movsd  %xmm0,-0x70(%rbp)
+Setting breakpoint at 0x00000000004018aa for instruction: movsd  0xa087e(%rip),%xmm0        # 0x4a2130
+Setting breakpoint at 0x00000000004018b2 for instruction: movsd  %xmm0,-0x68(%rbp)
+Setting breakpoint at 0x00000000004018b7 for instruction: movsd  0xa0879(%rip),%xmm0        # 0x4a2138
+Setting breakpoint at 0x00000000004018bf for instruction: movsd  %xmm0,-0x60(%rbp)
+Setting breakpoint at 0x00000000004018c4 for instruction: movsd  0xa082c(%rip),%xmm0        # 0x4a20f8
+Setting breakpoint at 0x00000000004018cc for instruction: movsd  %xmm0,-0x58(%rbp)
+Setting breakpoint at 0x00000000004018d1 for instruction: movsd  0xa0867(%rip),%xmm0        # 0x4a2140
+Setting breakpoint at 0x00000000004018d9 for instruction: movsd  %xmm0,-0x50(%rbp)
+Setting breakpoint at 0x00000000004018de for instruction: movsd  0xa0812(%rip),%xmm0        # 0x4a20f8
+Setting breakpoint at 0x00000000004018e6 for instruction: movsd  %xmm0,-0x48(%rbp)
+Setting breakpoint at 0x00000000004018eb for instruction: movsd  0xa0855(%rip),%xmm0        # 0x4a2148
+Setting breakpoint at 0x00000000004018f3 for instruction: movsd  %xmm0,-0x40(%rbp)
+Setting breakpoint at 0x00000000004018f8 for instruction: movq   $0x3fed0169,-0x38(%rbp)
+Setting breakpoint at 0x0000000000401900 for instruction: movq   $0x0,-0x30(%rbp)
+Setting breakpoint at 0x0000000000401908 for instruction: lea    0xa06f9(%rip),%rax        # 0x4a2008
+Setting breakpoint at 0x000000000040190f for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401912 for instruction: call   0x41bdd0 <puts>
+Setting breakpoint at 0x0000000000401917 for instruction: lea    -0x20(%rbp),%rcx
+Setting breakpoint at 0x000000000040191b for instruction: lea    -0xc8(%rbp),%rdx
+Setting breakpoint at 0x0000000000401922 for instruction: movsd  -0xa8(%rbp),%xmm2
+Setting breakpoint at 0x000000000040192a for instruction: movsd  -0xb0(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401932 for instruction: movsd  -0xb8(%rbp),%xmm0
+Setting breakpoint at 0x000000000040193a for instruction: mov    -0xc0(%rbp),%rax
+Setting breakpoint at 0x0000000000401941 for instruction: mov    %rcx,%rsi
+Setting breakpoint at 0x0000000000401944 for instruction: mov    %rdx,%rdi
+Setting breakpoint at 0x0000000000401947 for instruction: movapd %xmm2,%xmm3
+Setting breakpoint at 0x000000000040194b for instruction: movapd %xmm1,%xmm2
+Setting breakpoint at 0x000000000040194f for instruction: movapd %xmm0,%xmm1
+Setting breakpoint at 0x0000000000401953 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401958 for instruction: call   0x401fa9 <SolveCubic>
+Setting breakpoint at 0x000000000040195d for instruction: lea    0xa06ca(%rip),%rax        # 0x4a202e
+Setting breakpoint at 0x0000000000401964 for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401967 for instruction: mov    $0x0,%eax
+Setting breakpoint at 0x000000000040196c for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401971 for instruction: movl   $0x0,-0xc4(%rbp)
+Setting breakpoint at 0x000000000040197b for instruction: jmp    0x4019aa <main+437>
+Setting breakpoint at 0x000000000040197d for instruction: mov    -0xc4(%rbp),%eax
+Setting breakpoint at 0x0000000000401983 for instruction: cltq
+Setting breakpoint at 0x0000000000401985 for instruction: mov    -0x20(%rbp,%rax,8),%rax
+Setting breakpoint at 0x000000000040198a for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x000000000040198f for instruction: lea    0xa06a3(%rip),%rax        # 0x4a2039
+Setting breakpoint at 0x0000000000401996 for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401999 for instruction: mov    $0x1,%eax
+Setting breakpoint at 0x000000000040199e for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x00000000004019a3 for instruction: addl   $0x1,-0xc4(%rbp)
+Setting breakpoint at 0x00000000004019aa for instruction: mov    -0xc8(%rbp),%eax
+Setting breakpoint at 0x00000000004019b0 for instruction: cmp    %eax,-0xc4(%rbp)
+Setting breakpoint at 0x00000000004019b6 for instruction: jl     0x40197d <main+392>
+Setting breakpoint at 0x00000000004019b8 for instruction: mov    $0xa,%edi
+Setting breakpoint at 0x00000000004019bd for instruction: call   0x41bf70 <putchar>
+Setting breakpoint at 0x00000000004019c2 for instruction: lea    -0x20(%rbp),%rcx
+Setting breakpoint at 0x00000000004019c6 for instruction: lea    -0xc8(%rbp),%rdx
+Setting breakpoint at 0x00000000004019cd for instruction: movsd  -0x80(%rbp),%xmm2
+Setting breakpoint at 0x00000000004019d2 for instruction: movsd  -0x88(%rbp),%xmm1
+Setting breakpoint at 0x00000000004019da for instruction: movsd  -0x90(%rbp),%xmm0
+Setting breakpoint at 0x00000000004019e2 for instruction: mov    -0x98(%rbp),%rax
+Setting breakpoint at 0x00000000004019e9 for instruction: mov    %rcx,%rsi
+Setting breakpoint at 0x00000000004019ec for instruction: mov    %rdx,%rdi
+Setting breakpoint at 0x00000000004019ef for instruction: movapd %xmm2,%xmm3
+Setting breakpoint at 0x00000000004019f3 for instruction: movapd %xmm1,%xmm2
+Setting breakpoint at 0x00000000004019f7 for instruction: movapd %xmm0,%xmm1
+Setting breakpoint at 0x00000000004019fb for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401a00 for instruction: call   0x401fa9 <SolveCubic>
+Setting breakpoint at 0x0000000000401a05 for instruction: lea    0xa0622(%rip),%rax        # 0x4a202e
+Setting breakpoint at 0x0000000000401a0c for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401a0f for instruction: mov    $0x0,%eax
+Setting breakpoint at 0x0000000000401a14 for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401a19 for instruction: movl   $0x0,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401a23 for instruction: jmp    0x401a52 <main+605>
+Setting breakpoint at 0x0000000000401a25 for instruction: mov    -0xc4(%rbp),%eax
+Setting breakpoint at 0x0000000000401a2b for instruction: cltq
+Setting breakpoint at 0x0000000000401a2d for instruction: mov    -0x20(%rbp,%rax,8),%rax
+Setting breakpoint at 0x0000000000401a32 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401a37 for instruction: lea    0xa05fb(%rip),%rax        # 0x4a2039
+Setting breakpoint at 0x0000000000401a3e for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401a41 for instruction: mov    $0x1,%eax
+Setting breakpoint at 0x0000000000401a46 for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401a4b for instruction: addl   $0x1,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401a52 for instruction: mov    -0xc8(%rbp),%eax
+Setting breakpoint at 0x0000000000401a58 for instruction: cmp    %eax,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401a5e for instruction: jl     0x401a25 <main+560>
+Setting breakpoint at 0x0000000000401a60 for instruction: mov    $0xa,%edi
+Setting breakpoint at 0x0000000000401a65 for instruction: call   0x41bf70 <putchar>
+Setting breakpoint at 0x0000000000401a6a for instruction: lea    -0x20(%rbp),%rcx
+Setting breakpoint at 0x0000000000401a6e for instruction: lea    -0xc8(%rbp),%rdx
+Setting breakpoint at 0x0000000000401a75 for instruction: movsd  -0x60(%rbp),%xmm2
+Setting breakpoint at 0x0000000000401a7a for instruction: movsd  -0x68(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401a7f for instruction: movsd  -0x70(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401a84 for instruction: mov    -0x78(%rbp),%rax
+Setting breakpoint at 0x0000000000401a88 for instruction: mov    %rcx,%rsi
+Setting breakpoint at 0x0000000000401a8b for instruction: mov    %rdx,%rdi
+Setting breakpoint at 0x0000000000401a8e for instruction: movapd %xmm2,%xmm3
+Setting breakpoint at 0x0000000000401a92 for instruction: movapd %xmm1,%xmm2
+Setting breakpoint at 0x0000000000401a96 for instruction: movapd %xmm0,%xmm1
+Setting breakpoint at 0x0000000000401a9a for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401a9f for instruction: call   0x401fa9 <SolveCubic>
+Setting breakpoint at 0x0000000000401aa4 for instruction: lea    0xa0583(%rip),%rax        # 0x4a202e
+Setting breakpoint at 0x0000000000401aab for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401aae for instruction: mov    $0x0,%eax
+Setting breakpoint at 0x0000000000401ab3 for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401ab8 for instruction: movl   $0x0,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401ac2 for instruction: jmp    0x401af1 <main+764>
+Setting breakpoint at 0x0000000000401ac4 for instruction: mov    -0xc4(%rbp),%eax
+Setting breakpoint at 0x0000000000401aca for instruction: cltq
+Setting breakpoint at 0x0000000000401acc for instruction: mov    -0x20(%rbp,%rax,8),%rax
+Setting breakpoint at 0x0000000000401ad1 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401ad6 for instruction: lea    0xa055c(%rip),%rax        # 0x4a2039
+Setting breakpoint at 0x0000000000401add for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401ae0 for instruction: mov    $0x1,%eax
+Setting breakpoint at 0x0000000000401ae5 for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401aea for instruction: addl   $0x1,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401af1 for instruction: mov    -0xc8(%rbp),%eax
+Setting breakpoint at 0x0000000000401af7 for instruction: cmp    %eax,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401afd for instruction: jl     0x401ac4 <main+719>
+Setting breakpoint at 0x0000000000401aff for instruction: mov    $0xa,%edi
+Setting breakpoint at 0x0000000000401b04 for instruction: call   0x41bf70 <putchar>
+Setting breakpoint at 0x0000000000401b09 for instruction: lea    -0x20(%rbp),%rcx
+Setting breakpoint at 0x0000000000401b0d for instruction: lea    -0xc8(%rbp),%rdx
+Setting breakpoint at 0x0000000000401b14 for instruction: movsd  -0x40(%rbp),%xmm2
+Setting breakpoint at 0x0000000000401b19 for instruction: movsd  -0x48(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401b1e for instruction: movsd  -0x50(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401b23 for instruction: mov    -0x58(%rbp),%rax
+Setting breakpoint at 0x0000000000401b27 for instruction: mov    %rcx,%rsi
+Setting breakpoint at 0x0000000000401b2a for instruction: mov    %rdx,%rdi
+Setting breakpoint at 0x0000000000401b2d for instruction: movapd %xmm2,%xmm3
+Setting breakpoint at 0x0000000000401b31 for instruction: movapd %xmm1,%xmm2
+Setting breakpoint at 0x0000000000401b35 for instruction: movapd %xmm0,%xmm1
+Setting breakpoint at 0x0000000000401b39 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401b3e for instruction: call   0x401fa9 <SolveCubic>
+Setting breakpoint at 0x0000000000401b43 for instruction: lea    0xa04e4(%rip),%rax        # 0x4a202e
+Setting breakpoint at 0x0000000000401b4a for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401b4d for instruction: mov    $0x0,%eax
+Setting breakpoint at 0x0000000000401b52 for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401b57 for instruction: movl   $0x0,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401b61 for instruction: jmp    0x401b90 <main+923>
+Setting breakpoint at 0x0000000000401b63 for instruction: mov    -0xc4(%rbp),%eax
+Setting breakpoint at 0x0000000000401b69 for instruction: cltq
+Setting breakpoint at 0x0000000000401b6b for instruction: mov    -0x20(%rbp,%rax,8),%rax
+Setting breakpoint at 0x0000000000401b70 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401b75 for instruction: lea    0xa04bd(%rip),%rax        # 0x4a2039
+Setting breakpoint at 0x0000000000401b7c for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401b7f for instruction: mov    $0x1,%eax
+Setting breakpoint at 0x0000000000401b84 for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401b89 for instruction: addl   $0x1,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401b90 for instruction: mov    -0xc8(%rbp),%eax
+Setting breakpoint at 0x0000000000401b96 for instruction: cmp    %eax,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401b9c for instruction: jl     0x401b63 <main+878>
+Setting breakpoint at 0x0000000000401b9e for instruction: mov    $0xa,%edi
+Setting breakpoint at 0x0000000000401ba3 for instruction: call   0x41bf70 <putchar>
+Setting breakpoint at 0x0000000000401ba8 for instruction: movsd  0xa0548(%rip),%xmm0        # 0x4a20f8
+Setting breakpoint at 0x0000000000401bb0 for instruction: movsd  %xmm0,-0xc0(%rbp)
+Setting breakpoint at 0x0000000000401bb8 for instruction: jmp    0x401d59 <main+1380>
+Setting breakpoint at 0x0000000000401bbd for instruction: movsd  0xa058b(%rip),%xmm0        # 0x4a2150
+Setting breakpoint at 0x0000000000401bc5 for instruction: movsd  %xmm0,-0xb8(%rbp)
+Setting breakpoint at 0x0000000000401bcd for instruction: jmp    0x401d27 <main+1330>
+Setting breakpoint at 0x0000000000401bd2 for instruction: movsd  0xa057e(%rip),%xmm0        # 0x4a2158
+Setting breakpoint at 0x0000000000401bda for instruction: movsd  %xmm0,-0xb0(%rbp)
+Setting breakpoint at 0x0000000000401be2 for instruction: jmp    0x401cf5 <main+1280>
+Setting breakpoint at 0x0000000000401be7 for instruction: movsd  0xa0571(%rip),%xmm0        # 0x4a2160
+Setting breakpoint at 0x0000000000401bef for instruction: movsd  %xmm0,-0xa8(%rbp)
+Setting breakpoint at 0x0000000000401bf7 for instruction: jmp    0x401cc3 <main+1230>
+Setting breakpoint at 0x0000000000401bfc for instruction: lea    -0x20(%rbp),%rcx
+Setting breakpoint at 0x0000000000401c00 for instruction: lea    -0xc8(%rbp),%rdx
+Setting breakpoint at 0x0000000000401c07 for instruction: movsd  -0xa8(%rbp),%xmm2
+Setting breakpoint at 0x0000000000401c0f for instruction: movsd  -0xb0(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401c17 for instruction: movsd  -0xb8(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401c1f for instruction: mov    -0xc0(%rbp),%rax
+Setting breakpoint at 0x0000000000401c26 for instruction: mov    %rcx,%rsi
+Setting breakpoint at 0x0000000000401c29 for instruction: mov    %rdx,%rdi
+Setting breakpoint at 0x0000000000401c2c for instruction: movapd %xmm2,%xmm3
+Setting breakpoint at 0x0000000000401c30 for instruction: movapd %xmm1,%xmm2
+Setting breakpoint at 0x0000000000401c34 for instruction: movapd %xmm0,%xmm1
+Setting breakpoint at 0x0000000000401c38 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401c3d for instruction: call   0x401fa9 <SolveCubic>
+Setting breakpoint at 0x0000000000401c42 for instruction: lea    0xa03e5(%rip),%rax        # 0x4a202e
+Setting breakpoint at 0x0000000000401c49 for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401c4c for instruction: mov    $0x0,%eax
+Setting breakpoint at 0x0000000000401c51 for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401c56 for instruction: movl   $0x0,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401c60 for instruction: jmp    0x401c8f <main+1178>
+Setting breakpoint at 0x0000000000401c62 for instruction: mov    -0xc4(%rbp),%eax
+Setting breakpoint at 0x0000000000401c68 for instruction: cltq
+Setting breakpoint at 0x0000000000401c6a for instruction: mov    -0x20(%rbp,%rax,8),%rax
+Setting breakpoint at 0x0000000000401c6f for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401c74 for instruction: lea    0xa03be(%rip),%rax        # 0x4a2039
+Setting breakpoint at 0x0000000000401c7b for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401c7e for instruction: mov    $0x1,%eax
+Setting breakpoint at 0x0000000000401c83 for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401c88 for instruction: addl   $0x1,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401c8f for instruction: mov    -0xc8(%rbp),%eax
+Setting breakpoint at 0x0000000000401c95 for instruction: cmp    %eax,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401c9b for instruction: jl     0x401c62 <main+1133>
+Setting breakpoint at 0x0000000000401c9d for instruction: mov    $0xa,%edi
+Setting breakpoint at 0x0000000000401ca2 for instruction: call   0x41bf70 <putchar>
+Setting breakpoint at 0x0000000000401ca7 for instruction: movsd  -0xa8(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401caf for instruction: movsd  0xa0441(%rip),%xmm1        # 0x4a20f8
+Setting breakpoint at 0x0000000000401cb7 for instruction: subsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401cbb for instruction: movsd  %xmm0,-0xa8(%rbp)
+Setting breakpoint at 0x0000000000401cc3 for instruction: movsd  -0xa8(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401ccb for instruction: comisd 0xa0495(%rip),%xmm0        # 0x4a2168
+Setting breakpoint at 0x0000000000401cd3 for instruction: ja     0x401bfc <main+1031>
+Setting breakpoint at 0x0000000000401cd9 for instruction: movsd  -0xb0(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401ce1 for instruction: movsd  0xa0487(%rip),%xmm0        # 0x4a2170
+Setting breakpoint at 0x0000000000401ce9 for instruction: addsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401ced for instruction: movsd  %xmm0,-0xb0(%rbp)
+Setting breakpoint at 0x0000000000401cf5 for instruction: movsd  0xa047b(%rip),%xmm0        # 0x4a2178
+Setting breakpoint at 0x0000000000401cfd for instruction: comisd -0xb0(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401d05 for instruction: ja     0x401be7 <main+1010>
+Setting breakpoint at 0x0000000000401d0b for instruction: movsd  -0xb8(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401d13 for instruction: movsd  0xa03dd(%rip),%xmm1        # 0x4a20f8
+Setting breakpoint at 0x0000000000401d1b for instruction: subsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401d1f for instruction: movsd  %xmm0,-0xb8(%rbp)
+Setting breakpoint at 0x0000000000401d27 for instruction: movsd  -0xb8(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401d2f for instruction: pxor   %xmm1,%xmm1
+Setting breakpoint at 0x0000000000401d33 for instruction: comisd %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401d37 for instruction: ja     0x401bd2 <main+989>
+Setting breakpoint at 0x0000000000401d3d for instruction: movsd  -0xc0(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401d45 for instruction: movsd  0xa03ab(%rip),%xmm0        # 0x4a20f8
+Setting breakpoint at 0x0000000000401d4d for instruction: addsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401d51 for instruction: movsd  %xmm0,-0xc0(%rbp)
+Setting breakpoint at 0x0000000000401d59 for instruction: movsd  0xa03ef(%rip),%xmm0        # 0x4a2150
+Setting breakpoint at 0x0000000000401d61 for instruction: comisd -0xc0(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401d69 for instruction: ja     0x401bbd <main+968>
+Setting breakpoint at 0x0000000000401d6f for instruction: lea    0xa02ca(%rip),%rax        # 0x4a2040
+Setting breakpoint at 0x0000000000401d76 for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401d79 for instruction: call   0x41bdd0 <puts>
+Setting breakpoint at 0x0000000000401d7e for instruction: movl   $0x0,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401d88 for instruction: jmp    0x401dc7 <main+1490>
+Setting breakpoint at 0x0000000000401d8a for instruction: mov    -0xc4(%rbp),%eax
+Setting breakpoint at 0x0000000000401d90 for instruction: cltq
+Setting breakpoint at 0x0000000000401d92 for instruction: lea    -0x28(%rbp),%rdx
+Setting breakpoint at 0x0000000000401d96 for instruction: mov    %rdx,%rsi
+Setting breakpoint at 0x0000000000401d99 for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401d9c for instruction: call   0x402407 <usqrt>
+Setting breakpoint at 0x0000000000401da1 for instruction: mov    -0x28(%rbp),%edx
+Setting breakpoint at 0x0000000000401da4 for instruction: mov    -0xc4(%rbp),%eax
+Setting breakpoint at 0x0000000000401daa for instruction: mov    %eax,%esi
+Setting breakpoint at 0x0000000000401dac for instruction: lea    0xa02b5(%rip),%rax        # 0x4a2068
+Setting breakpoint at 0x0000000000401db3 for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401db6 for instruction: mov    $0x0,%eax
+Setting breakpoint at 0x0000000000401dbb for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401dc0 for instruction: addl   $0x1,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401dc7 for instruction: cmpl   $0x3e8,-0xc4(%rbp)
+Setting breakpoint at 0x0000000000401dd1 for instruction: jle    0x401d8a <main+1429>
+Setting breakpoint at 0x0000000000401dd3 for instruction: lea    -0x28(%rbp),%rdx
+Setting breakpoint at 0x0000000000401dd7 for instruction: mov    -0x38(%rbp),%rax
+Setting breakpoint at 0x0000000000401ddb for instruction: mov    %rdx,%rsi
+Setting breakpoint at 0x0000000000401dde for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401de1 for instruction: call   0x402407 <usqrt>
+Setting breakpoint at 0x0000000000401de6 for instruction: mov    -0x28(%rbp),%edx
+Setting breakpoint at 0x0000000000401de9 for instruction: mov    -0x38(%rbp),%rax
+Setting breakpoint at 0x0000000000401ded for instruction: mov    %rax,%rsi
+Setting breakpoint at 0x0000000000401df0 for instruction: lea    0xa0282(%rip),%rax        # 0x4a2079
+Setting breakpoint at 0x0000000000401df7 for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401dfa for instruction: mov    $0x0,%eax
+Setting breakpoint at 0x0000000000401dff for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401e04 for instruction: lea    0xa0285(%rip),%rax        # 0x4a2090
+Setting breakpoint at 0x0000000000401e0b for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401e0e for instruction: call   0x41bdd0 <puts>
+Setting breakpoint at 0x0000000000401e13 for instruction: pxor   %xmm0,%xmm0
+Setting breakpoint at 0x0000000000401e17 for instruction: movsd  %xmm0,-0xa0(%rbp)
+Setting breakpoint at 0x0000000000401e1f for instruction: jmp    0x401e81 <main+1676>
+Setting breakpoint at 0x0000000000401e21 for instruction: movsd  -0xa0(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401e29 for instruction: movsd  0xa034f(%rip),%xmm0        # 0x4a2180
+Setting breakpoint at 0x0000000000401e31 for instruction: mulsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401e35 for instruction: movsd  0xa034b(%rip),%xmm1        # 0x4a2188
+Setting breakpoint at 0x0000000000401e3d for instruction: divsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401e41 for instruction: mov    -0xa0(%rbp),%rax
+Setting breakpoint at 0x0000000000401e48 for instruction: movapd %xmm0,%xmm1
+Setting breakpoint at 0x0000000000401e4c for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401e51 for instruction: lea    0xa0260(%rip),%rax        # 0x4a20b8
+Setting breakpoint at 0x0000000000401e58 for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401e5b for instruction: mov    $0x2,%eax
+Setting breakpoint at 0x0000000000401e60 for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401e65 for instruction: movsd  -0xa0(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401e6d for instruction: movsd  0xa0283(%rip),%xmm0        # 0x4a20f8
+Setting breakpoint at 0x0000000000401e75 for instruction: addsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401e79 for instruction: movsd  %xmm0,-0xa0(%rbp)
+Setting breakpoint at 0x0000000000401e81 for instruction: movsd  0xa0307(%rip),%xmm0        # 0x4a2190
+Setting breakpoint at 0x0000000000401e89 for instruction: comisd -0xa0(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401e91 for instruction: jae    0x401e21 <main+1580>
+Setting breakpoint at 0x0000000000401e93 for instruction: lea    0xa023d(%rip),%rax        # 0x4a20d7
+Setting breakpoint at 0x0000000000401e9a for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401e9d for instruction: call   0x41bdd0 <puts>
+Setting breakpoint at 0x0000000000401ea2 for instruction: pxor   %xmm0,%xmm0
+Setting breakpoint at 0x0000000000401ea6 for instruction: movsd  %xmm0,-0xa0(%rbp)
+Setting breakpoint at 0x0000000000401eae for instruction: jmp    0x401f10 <main+1819>
+Setting breakpoint at 0x0000000000401eb0 for instruction: movsd  -0xa0(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401eb8 for instruction: movsd  0xa02c8(%rip),%xmm0        # 0x4a2188
+Setting breakpoint at 0x0000000000401ec0 for instruction: mulsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401ec4 for instruction: movsd  0xa02b4(%rip),%xmm1        # 0x4a2180
+Setting breakpoint at 0x0000000000401ecc for instruction: divsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401ed0 for instruction: mov    -0xa0(%rbp),%rax
+Setting breakpoint at 0x0000000000401ed7 for instruction: movapd %xmm0,%xmm1
+Setting breakpoint at 0x0000000000401edb for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401ee0 for instruction: lea    0xa01f1(%rip),%rax        # 0x4a20d8
+Setting breakpoint at 0x0000000000401ee7 for instruction: mov    %rax,%rdi
+Setting breakpoint at 0x0000000000401eea for instruction: mov    $0x2,%eax
+Setting breakpoint at 0x0000000000401eef for instruction: call   0x415200 <printf>
+Setting breakpoint at 0x0000000000401ef4 for instruction: movsd  -0xa0(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401efc for instruction: movsd  0xa0294(%rip),%xmm0        # 0x4a2198
+Setting breakpoint at 0x0000000000401f04 for instruction: addsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401f08 for instruction: movsd  %xmm0,-0xa0(%rbp)
+Setting breakpoint at 0x0000000000401f10 for instruction: movsd  0xa0288(%rip),%xmm0        # 0x4a21a0
+Setting breakpoint at 0x0000000000401f18 for instruction: comisd -0xa0(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401f20 for instruction: jae    0x401eb0 <main+1723>
+Setting breakpoint at 0x0000000000401f22 for instruction: mov    $0x0,%eax
+Setting breakpoint at 0x0000000000401f27 for instruction: mov    -0x8(%rbp),%rdx
+Setting breakpoint at 0x0000000000401f2b for instruction: sub    %fs:0x28,%rdx
+Setting breakpoint at 0x0000000000401f34 for instruction: je     0x401f3b <main+1862>
+Setting breakpoint at 0x0000000000401f36 for instruction: call   0x45bcc0 <__stack_chk_fail_local>
+Setting breakpoint at 0x0000000000401f3b for instruction: leave
+Setting breakpoint at 0x0000000000401f3c for instruction: ret
+Setting breakpoint at 0x0000000000401fa9 for instruction: endbr64
+Setting breakpoint at 0x0000000000401fad for instruction: push   %rbp
+Setting breakpoint at 0x0000000000401fae for instruction: mov    %rsp,%rbp
+Setting breakpoint at 0x0000000000401fb1 for instruction: sub    $0xa0,%rsp
+Setting breakpoint at 0x0000000000401fb8 for instruction: movsd  %xmm0,-0x68(%rbp)
+Setting breakpoint at 0x0000000000401fbd for instruction: movsd  %xmm1,-0x70(%rbp)
+Setting breakpoint at 0x0000000000401fc2 for instruction: movsd  %xmm2,-0x78(%rbp)
+Setting breakpoint at 0x0000000000401fc7 for instruction: movsd  %xmm3,-0x80(%rbp)
+Setting breakpoint at 0x0000000000401fcc for instruction: mov    %rdi,-0x88(%rbp)
+Setting breakpoint at 0x0000000000401fd3 for instruction: mov    %rsi,-0x90(%rbp)
+Setting breakpoint at 0x0000000000401fda for instruction: movsd  -0x70(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401fdf for instruction: divsd  -0x68(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401fe4 for instruction: movsd  %xmm0,-0x98(%rbp)
+Setting breakpoint at 0x0000000000401fec for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x0000000000401ff2 for instruction: fstpt  -0x50(%rbp)
+Setting breakpoint at 0x0000000000401ff5 for instruction: movsd  -0x78(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401ffa for instruction: divsd  -0x68(%rbp),%xmm0
+Setting breakpoint at 0x0000000000401fff for instruction: movsd  %xmm0,-0x98(%rbp)
+Setting breakpoint at 0x0000000000402007 for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x000000000040200d for instruction: fstpt  -0x40(%rbp)
+Setting breakpoint at 0x0000000000402010 for instruction: movsd  -0x80(%rbp),%xmm0
+Setting breakpoint at 0x0000000000402015 for instruction: divsd  -0x68(%rbp),%xmm0
+Setting breakpoint at 0x000000000040201a for instruction: movsd  %xmm0,-0x98(%rbp)
+Setting breakpoint at 0x0000000000402022 for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x0000000000402028 for instruction: fstpt  -0x30(%rbp)
+Setting breakpoint at 0x000000000040202b for instruction: fldt   -0x50(%rbp)
+Setting breakpoint at 0x000000000040202e for instruction: fld    %st(0)
+Setting breakpoint at 0x0000000000402030 for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x0000000000402032 for instruction: fldt   -0x40(%rbp)
+Setting breakpoint at 0x0000000000402035 for instruction: fldt   0xa0185(%rip)        # 0x4a21c0
+Setting breakpoint at 0x000000000040203b for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x000000000040203d for instruction: fsubrp %st,%st(1)
+Setting breakpoint at 0x000000000040203f for instruction: fldt   0xa018b(%rip)        # 0x4a21d0
+Setting breakpoint at 0x0000000000402045 for instruction: fdivrp %st,%st(1)
+Setting breakpoint at 0x0000000000402047 for instruction: fstpt  -0x20(%rbp)
+Setting breakpoint at 0x000000000040204a for instruction: fldt   -0x50(%rbp)
+Setting breakpoint at 0x000000000040204d for instruction: fld    %st(0)
+Setting breakpoint at 0x000000000040204f for instruction: faddp  %st,%st(1)
+Setting breakpoint at 0x0000000000402051 for instruction: fldt   -0x50(%rbp)
+Setting breakpoint at 0x0000000000402054 for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x0000000000402056 for instruction: fldt   -0x50(%rbp)
+Setting breakpoint at 0x0000000000402059 for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x000000000040205b for instruction: fldt   -0x50(%rbp)
+Setting breakpoint at 0x000000000040205e for instruction: fldt   0xa016c(%rip)        # 0x4a21d0
+Setting breakpoint at 0x0000000000402064 for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x0000000000402066 for instruction: fldt   -0x40(%rbp)
+Setting breakpoint at 0x0000000000402069 for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x000000000040206b for instruction: fsubrp %st,%st(1)
+Setting breakpoint at 0x000000000040206d for instruction: fldt   -0x30(%rbp)
+Setting breakpoint at 0x0000000000402070 for instruction: fldt   0xa016a(%rip)        # 0x4a21e0
+Setting breakpoint at 0x0000000000402076 for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x0000000000402078 for instruction: faddp  %st,%st(1)
+Setting breakpoint at 0x000000000040207a for instruction: fldt   0xa0170(%rip)        # 0x4a21f0
+Setting breakpoint at 0x0000000000402080 for instruction: fdivrp %st,%st(1)
+Setting breakpoint at 0x0000000000402082 for instruction: fstpt  -0x10(%rbp)
+Setting breakpoint at 0x0000000000402085 for instruction: fldt   -0x10(%rbp)
+Setting breakpoint at 0x0000000000402088 for instruction: fld    %st(0)
+Setting breakpoint at 0x000000000040208a for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x000000000040208c for instruction: fldt   -0x20(%rbp)
+Setting breakpoint at 0x000000000040208f for instruction: fld    %st(0)
+Setting breakpoint at 0x0000000000402091 for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x0000000000402093 for instruction: fldt   -0x20(%rbp)
+Setting breakpoint at 0x0000000000402096 for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x0000000000402098 for instruction: fsubrp %st,%st(1)
+Setting breakpoint at 0x000000000040209a for instruction: fstpl  -0x60(%rbp)
+Setting breakpoint at 0x000000000040209d for instruction: pxor   %xmm0,%xmm0
+Setting breakpoint at 0x00000000004020a1 for instruction: comisd -0x60(%rbp),%xmm0
+Setting breakpoint at 0x00000000004020a6 for instruction: jb     0x4022d6 <SolveCubic+813>
+Setting breakpoint at 0x00000000004020ac for instruction: mov    -0x88(%rbp),%rax
+Setting breakpoint at 0x00000000004020b3 for instruction: movl   $0x3,(%rax)
+Setting breakpoint at 0x00000000004020b9 for instruction: fldt   -0x20(%rbp)
+Setting breakpoint at 0x00000000004020bc for instruction: fld    %st(0)
+Setting breakpoint at 0x00000000004020be for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x00000000004020c0 for instruction: fldt   -0x20(%rbp)
+Setting breakpoint at 0x00000000004020c3 for instruction: fmulp  %st,%st(1)
+Setting breakpoint at 0x00000000004020c5 for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x00000000004020cb for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x00000000004020d3 for instruction: call   0x403980 <sqrtf64>
+Setting breakpoint at 0x00000000004020d8 for instruction: movsd  %xmm0,-0x98(%rbp)
+Setting breakpoint at 0x00000000004020e0 for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x00000000004020e6 for instruction: fldt   -0x10(%rbp)
+Setting breakpoint at 0x00000000004020e9 for instruction: fdivp  %st,%st(1)
+Setting breakpoint at 0x00000000004020eb for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x00000000004020f1 for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x00000000004020f9 for instruction: call   0x403880 <acosf64>
+Setting breakpoint at 0x00000000004020fe for instruction: movq   %xmm0,%rax
+Setting breakpoint at 0x0000000000402103 for instruction: mov    %rax,-0x58(%rbp)
+Setting breakpoint at 0x0000000000402107 for instruction: fldt   -0x20(%rbp)
+Setting breakpoint at 0x000000000040210a for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x0000000000402110 for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x0000000000402118 for instruction: call   0x403980 <sqrtf64>
+Setting breakpoint at 0x000000000040211d for instruction: movsd  0xa00db(%rip),%xmm1        # 0x4a2200
+Setting breakpoint at 0x0000000000402125 for instruction: mulsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000402129 for instruction: movsd  %xmm0,-0x98(%rbp)
+Setting breakpoint at 0x0000000000402131 for instruction: movsd  -0x58(%rbp),%xmm0
+Setting breakpoint at 0x0000000000402136 for instruction: movsd  0xa00ca(%rip),%xmm1        # 0x4a2208
+Setting breakpoint at 0x000000000040213e for instruction: movapd %xmm0,%xmm5
+Setting breakpoint at 0x0000000000402142 for instruction: divsd  %xmm1,%xmm5
+Setting breakpoint at 0x0000000000402146 for instruction: movq   %xmm5,%rax
+Setting breakpoint at 0x000000000040214b for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000402150 for instruction: call   0x4010a0
+Setting breakpoint at 0x0000000000402155 for instruction: movapd %xmm0,%xmm6
+Setting breakpoint at 0x0000000000402159 for instruction: mulsd  -0x98(%rbp),%xmm6
+Setting breakpoint at 0x0000000000402161 for instruction: movsd  %xmm6,-0x98(%rbp)
+Setting breakpoint at 0x0000000000402169 for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x000000000040216f for instruction: fldt   -0x50(%rbp)
+Setting breakpoint at 0x0000000000402172 for instruction: fldt   0xa0048(%rip)        # 0x4a21c0
+Setting breakpoint at 0x0000000000402178 for instruction: fdivrp %st,%st(1)
+Setting breakpoint at 0x000000000040217a for instruction: fsubrp %st,%st(1)
+Setting breakpoint at 0x000000000040217c for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x0000000000402182 for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x000000000040218a for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x0000000000402191 for instruction: movsd  %xmm0,(%rax)
+Setting breakpoint at 0x0000000000402195 for instruction: fldt   -0x20(%rbp)
+Setting breakpoint at 0x0000000000402198 for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x000000000040219e for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x00000000004021a6 for instruction: call   0x403980 <sqrtf64>
+Setting breakpoint at 0x00000000004021ab for instruction: movsd  0xa004d(%rip),%xmm1        # 0x4a2200
+Setting breakpoint at 0x00000000004021b3 for instruction: mulsd  %xmm1,%xmm0
+Setting breakpoint at 0x00000000004021b7 for instruction: movsd  %xmm0,-0x98(%rbp)
+Setting breakpoint at 0x00000000004021bf for instruction: movsd  -0x58(%rbp),%xmm1
+Setting breakpoint at 0x00000000004021c4 for instruction: movsd  0xa0044(%rip),%xmm0        # 0x4a2210
+Setting breakpoint at 0x00000000004021cc for instruction: addsd  %xmm1,%xmm0
+Setting breakpoint at 0x00000000004021d0 for instruction: movsd  0xa0030(%rip),%xmm1        # 0x4a2208
+Setting breakpoint at 0x00000000004021d8 for instruction: movapd %xmm0,%xmm3
+Setting breakpoint at 0x00000000004021dc for instruction: divsd  %xmm1,%xmm3
+Setting breakpoint at 0x00000000004021e0 for instruction: movq   %xmm3,%rax
+Setting breakpoint at 0x00000000004021e5 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x00000000004021ea for instruction: call   0x4010a0
+Setting breakpoint at 0x00000000004021ef for instruction: movapd %xmm0,%xmm4
+Setting breakpoint at 0x00000000004021f3 for instruction: mulsd  -0x98(%rbp),%xmm4
+Setting breakpoint at 0x00000000004021fb for instruction: movsd  %xmm4,-0x98(%rbp)
+Setting breakpoint at 0x0000000000402203 for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x0000000000402209 for instruction: fldt   -0x50(%rbp)
+Setting breakpoint at 0x000000000040220c for instruction: fldt   0x9ffae(%rip)        # 0x4a21c0
+Setting breakpoint at 0x0000000000402212 for instruction: fdivrp %st,%st(1)
+Setting breakpoint at 0x0000000000402214 for instruction: fsubrp %st,%st(1)
+Setting breakpoint at 0x0000000000402216 for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x000000000040221d for instruction: add    $0x8,%rax
+Setting breakpoint at 0x0000000000402221 for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x0000000000402227 for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x000000000040222f for instruction: movsd  %xmm0,(%rax)
+Setting breakpoint at 0x0000000000402233 for instruction: fldt   -0x20(%rbp)
+Setting breakpoint at 0x0000000000402236 for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x000000000040223c for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x0000000000402244 for instruction: call   0x403980 <sqrtf64>
+Setting breakpoint at 0x0000000000402249 for instruction: movsd  0x9ffaf(%rip),%xmm1        # 0x4a2200
+Setting breakpoint at 0x0000000000402251 for instruction: mulsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000402255 for instruction: movsd  %xmm0,-0x98(%rbp)
+Setting breakpoint at 0x000000000040225d for instruction: movsd  -0x58(%rbp),%xmm1
+Setting breakpoint at 0x0000000000402262 for instruction: movsd  0x9ffae(%rip),%xmm0        # 0x4a2218
+Setting breakpoint at 0x000000000040226a for instruction: addsd  %xmm1,%xmm0
+Setting breakpoint at 0x000000000040226e for instruction: movsd  0x9ff92(%rip),%xmm1        # 0x4a2208
+Setting breakpoint at 0x0000000000402276 for instruction: movapd %xmm0,%xmm2
+Setting breakpoint at 0x000000000040227a for instruction: divsd  %xmm1,%xmm2
+Setting breakpoint at 0x000000000040227e for instruction: movq   %xmm2,%rax
+Setting breakpoint at 0x0000000000402283 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000402288 for instruction: call   0x4010a0
+Setting breakpoint at 0x000000000040228d for instruction: movapd %xmm0,%xmm5
+Setting breakpoint at 0x0000000000402291 for instruction: mulsd  -0x98(%rbp),%xmm5
+Setting breakpoint at 0x0000000000402299 for instruction: movsd  %xmm5,-0x98(%rbp)
+Setting breakpoint at 0x00000000004022a1 for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x00000000004022a7 for instruction: fldt   -0x50(%rbp)
+Setting breakpoint at 0x00000000004022aa for instruction: fldt   0x9ff10(%rip)        # 0x4a21c0
+Setting breakpoint at 0x00000000004022b0 for instruction: fdivrp %st,%st(1)
+Setting breakpoint at 0x00000000004022b2 for instruction: fsubrp %st,%st(1)
+Setting breakpoint at 0x00000000004022b4 for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x00000000004022bb for instruction: add    $0x10,%rax
+Setting breakpoint at 0x00000000004022bf for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x00000000004022c5 for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x00000000004022cd for instruction: movsd  %xmm0,(%rax)
+Setting breakpoint at 0x00000000004022d1 for instruction: jmp    0x402404 <SolveCubic+1115>
+Setting breakpoint at 0x00000000004022d6 for instruction: mov    -0x88(%rbp),%rax
+Setting breakpoint at 0x00000000004022dd for instruction: movl   $0x1,(%rax)
+Setting breakpoint at 0x00000000004022e3 for instruction: mov    -0x60(%rbp),%rax
+Setting breakpoint at 0x00000000004022e7 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x00000000004022ec for instruction: call   0x403980 <sqrtf64>
+Setting breakpoint at 0x00000000004022f1 for instruction: fldt   -0x10(%rbp)
+Setting breakpoint at 0x00000000004022f4 for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x00000000004022fa for instruction: movsd  -0x98(%rbp),%xmm2
+Setting breakpoint at 0x0000000000402302 for instruction: movq   0x9ff16(%rip),%xmm1        # 0x4a2220
+Setting breakpoint at 0x000000000040230a for instruction: andpd  %xmm2,%xmm1
+Setting breakpoint at 0x000000000040230e for instruction: addsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000402312 for instruction: movq   %xmm0,%rax
+Setting breakpoint at 0x0000000000402317 for instruction: movsd  0x9ff11(%rip),%xmm0        # 0x4a2230
+Setting breakpoint at 0x000000000040231f for instruction: movapd %xmm0,%xmm1
+Setting breakpoint at 0x0000000000402323 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000402328 for instruction: call   0x4038c0 <powf64>
+Setting breakpoint at 0x000000000040232d for instruction: movq   %xmm0,%rax
+Setting breakpoint at 0x0000000000402332 for instruction: mov    -0x90(%rbp),%rdx
+Setting breakpoint at 0x0000000000402339 for instruction: mov    %rax,(%rdx)
+Setting breakpoint at 0x000000000040233c for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x0000000000402343 for instruction: movsd  (%rax),%xmm6
+Setting breakpoint at 0x0000000000402347 for instruction: movsd  %xmm6,-0x98(%rbp)
+Setting breakpoint at 0x000000000040234f for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x0000000000402355 for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x000000000040235c for instruction: movsd  (%rax),%xmm3
+Setting breakpoint at 0x0000000000402360 for instruction: movsd  %xmm3,-0x98(%rbp)
+Setting breakpoint at 0x0000000000402368 for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x000000000040236e for instruction: fldt   -0x20(%rbp)
+Setting breakpoint at 0x0000000000402371 for instruction: fdivp  %st,%st(1)
+Setting breakpoint at 0x0000000000402373 for instruction: faddp  %st,%st(1)
+Setting breakpoint at 0x0000000000402375 for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x000000000040237b for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x0000000000402383 for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x000000000040238a for instruction: movsd  %xmm0,(%rax)
+Setting breakpoint at 0x000000000040238e for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x0000000000402395 for instruction: movsd  (%rax),%xmm1
+Setting breakpoint at 0x0000000000402399 for instruction: fldt   -0x10(%rbp)
+Setting breakpoint at 0x000000000040239c for instruction: fldz
+Setting breakpoint at 0x000000000040239e for instruction: fcomip %st(1),%st
+Setting breakpoint at 0x00000000004023a0 for instruction: fstp   %st(0)
+Setting breakpoint at 0x00000000004023a2 for instruction: jbe    0x4023ae <SolveCubic+1029>
+Setting breakpoint at 0x00000000004023a4 for instruction: movsd  0x9fe8c(%rip),%xmm0        # 0x4a2238
+Setting breakpoint at 0x00000000004023ac for instruction: jmp    0x4023b6 <SolveCubic+1037>
+Setting breakpoint at 0x00000000004023ae for instruction: movsd  0x9fe8a(%rip),%xmm0        # 0x4a2240
+Setting breakpoint at 0x00000000004023b6 for instruction: mulsd  %xmm1,%xmm0
+Setting breakpoint at 0x00000000004023ba for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x00000000004023c1 for instruction: movsd  %xmm0,(%rax)
+Setting breakpoint at 0x00000000004023c5 for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x00000000004023cc for instruction: movsd  (%rax),%xmm7
+Setting breakpoint at 0x00000000004023d0 for instruction: movsd  %xmm7,-0x98(%rbp)
+Setting breakpoint at 0x00000000004023d8 for instruction: fldl   -0x98(%rbp)
+Setting breakpoint at 0x00000000004023de for instruction: fldt   -0x50(%rbp)
+Setting breakpoint at 0x00000000004023e1 for instruction: fldt   0x9fdd9(%rip)        # 0x4a21c0
+Setting breakpoint at 0x00000000004023e7 for instruction: fdivrp %st,%st(1)
+Setting breakpoint at 0x00000000004023e9 for instruction: fsubrp %st,%st(1)
+Setting breakpoint at 0x00000000004023eb for instruction: fstpl  -0x98(%rbp)
+Setting breakpoint at 0x00000000004023f1 for instruction: movsd  -0x98(%rbp),%xmm0
+Setting breakpoint at 0x00000000004023f9 for instruction: mov    -0x90(%rbp),%rax
+Setting breakpoint at 0x0000000000402400 for instruction: movsd  %xmm0,(%rax)
+Setting breakpoint at 0x0000000000402404 for instruction: nop
+Setting breakpoint at 0x0000000000402405 for instruction: leave
+Setting breakpoint at 0x0000000000402406 for instruction: ret
+Setting breakpoint at 0x0000000000402407 for instruction: endbr64
+Setting breakpoint at 0x000000000040240b for instruction: push   %rbp
+Setting breakpoint at 0x000000000040240c for instruction: mov    %rsp,%rbp
+Setting breakpoint at 0x000000000040240f for instruction: sub    $0x40,%rsp
+Setting breakpoint at 0x0000000000402413 for instruction: mov    %rdi,-0x38(%rbp)
+Setting breakpoint at 0x0000000000402417 for instruction: mov    %rsi,-0x40(%rbp)
+Setting breakpoint at 0x000000000040241b for instruction: mov    %fs:0x28,%rax
+Setting breakpoint at 0x0000000000402424 for instruction: mov    %rax,-0x8(%rbp)
+Setting breakpoint at 0x0000000000402428 for instruction: xor    %eax,%eax
+Setting breakpoint at 0x000000000040242a for instruction: movq   $0x0,-0x20(%rbp)
+Setting breakpoint at 0x0000000000402432 for instruction: movq   $0x0,-0x18(%rbp)
+Setting breakpoint at 0x000000000040243a for instruction: movq   $0x0,-0x10(%rbp)
+Setting breakpoint at 0x0000000000402442 for instruction: movl   $0x0,-0x24(%rbp)
+Setting breakpoint at 0x0000000000402449 for instruction: jmp    0x4024aa <usqrt+163>
+Setting breakpoint at 0x000000000040244b for instruction: mov    -0x18(%rbp),%rax
+Setting breakpoint at 0x000000000040244f for instruction: lea    0x0(,%rax,4),%rdx
+Setting breakpoint at 0x0000000000402457 for instruction: mov    -0x38(%rbp),%rax
+Setting breakpoint at 0x000000000040245b for instruction: shr    $0x1e,%rax
+Setting breakpoint at 0x000000000040245f for instruction: and    $0x3,%eax
+Setting breakpoint at 0x0000000000402462 for instruction: add    %rdx,%rax
+Setting breakpoint at 0x0000000000402465 for instruction: mov    %rax,-0x18(%rbp)
+Setting breakpoint at 0x0000000000402469 for instruction: shlq   $0x2,-0x38(%rbp)
+Setting breakpoint at 0x000000000040246e for instruction: mov    -0x20(%rbp),%rax
+Setting breakpoint at 0x0000000000402472 for instruction: add    %rax,%rax
+Setting breakpoint at 0x0000000000402475 for instruction: mov    %rax,-0x20(%rbp)
+Setting breakpoint at 0x0000000000402479 for instruction: mov    -0x20(%rbp),%rax
+Setting breakpoint at 0x000000000040247d for instruction: add    %rax,%rax
+Setting breakpoint at 0x0000000000402480 for instruction: add    $0x1,%rax
+Setting breakpoint at 0x0000000000402484 for instruction: mov    %rax,-0x10(%rbp)
+Setting breakpoint at 0x0000000000402488 for instruction: mov    -0x18(%rbp),%rax
+Setting breakpoint at 0x000000000040248c for instruction: cmp    -0x10(%rbp),%rax
+Setting breakpoint at 0x0000000000402490 for instruction: jb     0x4024a6 <usqrt+159>
+Setting breakpoint at 0x0000000000402492 for instruction: mov    -0x10(%rbp),%rax
+Setting breakpoint at 0x0000000000402496 for instruction: sub    %rax,-0x18(%rbp)
+Setting breakpoint at 0x000000000040249a for instruction: mov    -0x20(%rbp),%rax
+Setting breakpoint at 0x000000000040249e for instruction: add    $0x1,%rax
+Setting breakpoint at 0x00000000004024a2 for instruction: mov    %rax,-0x20(%rbp)
+Setting breakpoint at 0x00000000004024a6 for instruction: addl   $0x1,-0x24(%rbp)
+Setting breakpoint at 0x00000000004024aa for instruction: cmpl   $0x1f,-0x24(%rbp)
+Setting breakpoint at 0x00000000004024ae for instruction: jle    0x40244b <usqrt+68>
+Setting breakpoint at 0x00000000004024b0 for instruction: mov    -0x20(%rbp),%rdx
+Setting breakpoint at 0x00000000004024b4 for instruction: mov    -0x40(%rbp),%rax
+Setting breakpoint at 0x00000000004024b8 for instruction: mov    %rdx,(%rax)
+Setting breakpoint at 0x00000000004024bb for instruction: nop
+Setting breakpoint at 0x00000000004024bc for instruction: mov    -0x8(%rbp),%rax
+Setting breakpoint at 0x00000000004024c0 for instruction: sub    %fs:0x28,%rax
+Setting breakpoint at 0x00000000004024c9 for instruction: je     0x4024d0 <usqrt+201>
+Setting breakpoint at 0x00000000004024cb for instruction: call   0x45bcc0 <__stack_chk_fail_local>
+Setting breakpoint at 0x00000000004024d0 for instruction: leave
+Setting breakpoint at 0x00000000004024d1 for instruction: ret
+Setting breakpoint at 0x0000000000401f73 for instruction: endbr64
+Setting breakpoint at 0x0000000000401f77 for instruction: push   %rbp
+Setting breakpoint at 0x0000000000401f78 for instruction: mov    %rsp,%rbp
+Setting breakpoint at 0x0000000000401f7b for instruction: movsd  %xmm0,-0x8(%rbp)
+Setting breakpoint at 0x0000000000401f80 for instruction: movsd  -0x8(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401f85 for instruction: movsd  0xa0223(%rip),%xmm0        # 0x4a21b0
+Setting breakpoint at 0x0000000000401f8d for instruction: mulsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401f91 for instruction: movsd  0xa020f(%rip),%xmm1        # 0x4a21a8
+Setting breakpoint at 0x0000000000401f99 for instruction: divsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401f9d for instruction: movq   %xmm0,%rax
+Setting breakpoint at 0x0000000000401fa2 for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401fa7 for instruction: pop    %rbp
+Setting breakpoint at 0x0000000000401fa8 for instruction: ret
+Setting breakpoint at 0x0000000000401f3d for instruction: endbr64
+Setting breakpoint at 0x0000000000401f41 for instruction: push   %rbp
+Setting breakpoint at 0x0000000000401f42 for instruction: mov    %rsp,%rbp
+Setting breakpoint at 0x0000000000401f45 for instruction: movsd  %xmm0,-0x8(%rbp)
+Setting breakpoint at 0x0000000000401f4a for instruction: movsd  -0x8(%rbp),%xmm1
+Setting breakpoint at 0x0000000000401f4f for instruction: movsd  0xa0251(%rip),%xmm0        # 0x4a21a8
+Setting breakpoint at 0x0000000000401f57 for instruction: mulsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401f5b for instruction: movsd  0xa024d(%rip),%xmm1        # 0x4a21b0
+Setting breakpoint at 0x0000000000401f63 for instruction: divsd  %xmm1,%xmm0
+Setting breakpoint at 0x0000000000401f67 for instruction: movq   %xmm0,%rax
+Setting breakpoint at 0x0000000000401f6c for instruction: movq   %rax,%xmm0
+Setting breakpoint at 0x0000000000401f71 for instruction: pop    %rbp
+Setting breakpoint at 0x0000000000401f72 for instruction: ret
+Running the program...
+
+Instruction Execution Counts:
+basicmath_small.c:7 executed 7 times
+basicmath_small.c:8 executed 8 times
+basicmath_small.c:9 executed 8 times
+basicmath_small.c:10 executed 8 times
+basicmath_small.c:11 executed 8 times
+basicmath_small.c:16 executed 1 times
+basicmath_small.c:18 executed 1 times
+basicmath_small.c:21 executed 3 times
+basicmath_small.c:23 executed 13 times
+basicmath_small.c:24 executed 4 times
+basicmath_small.c:25 executed 17 times
+basicmath_small.c:26 executed 24 times
+basicmath_small.c:27 executed 2 times
+basicmath_small.c:29 executed 13 times
+basicmath_small.c:30 executed 4 times
+basicmath_small.c:31 executed 9 times
+basicmath_small.c:32 executed 8 times
+basicmath_small.c:33 executed 2 times
+basicmath_small.c:34 executed 13 times
+cubic.c:18 executed 30 times
+cubic.c:19 executed 45 times
+cubic.c:20 executed 30 times
+cubic.c:21 executed 45 times
+cubic.c:22 executed 20 times
+cubic.c:26 executed 6 times
+cubic.c:28 executed 2 times
+cubic.c:29 executed 17 times
+cubic.c:30 executed 26 times
+cubic.c:31 executed 29 times
+cubic.c:32 executed 29 times
+cubic.c:36 executed 2 times
+cubic.c:37 executed 17 times
+cubic.c:38 executed 15 times
+cubic.c:39 executed 12 times
+cubic.c:40 executed 12 times
+cubic.c:42 executed 7 times
+Program finished.
