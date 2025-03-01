@@ -2,12 +2,13 @@ import gdb
 import re
 
 class AsmCounter(gdb.Command):
-    """Counts execution of assembly instructions in batch mode."""
+    """Counts execution of assembly instructions and shows source line numbers."""
 
     def __init__(self):
         super(AsmCounter, self).__init__("count_asm", gdb.COMMAND_USER)
         self.counts = {}
         self.asm_lines = {}
+        self.line_numbers = {}
         self.visited_addresses = set()
         self.breakpoints = []
 
@@ -32,6 +33,8 @@ class AsmCounter(gdb.Command):
                             self.visited_addresses.add(addr)
                             self.counts[addr] = 0
                             self.asm_lines[addr] = instruction
+                            line_number = self.get_source_line(addr)
+                            self.line_numbers[addr] = line_number
                             BreakpointAtAddress(addr, self)
             except gdb.error as e:
                 print(f"Error disassembling {function_name}: {e}")
@@ -50,11 +53,22 @@ class AsmCounter(gdb.Command):
                 functions.append(match.group(1))
         return functions
 
+    def get_source_line(self, addr):
+        """Returns the corresponding source code line number for an assembly address."""
+        try:
+            output = gdb.execute(f"info line *{addr}", to_string=True)
+            match = re.search(r"Line (\d+) of \"([^\"]+)\"", output)
+            if match:
+                return f"{match.group(2)}:{match.group(1)}"
+        except gdb.error:
+            return "Unknown"
+
     def print_results(self):
         print("\nFinal Execution Counts:")
         for addr, count in sorted(self.counts.items(), key=lambda x: x[1], reverse=True):
             instruction = self.asm_lines.get(addr, "Unknown instruction")
-            print(f"{addr} -> {instruction} executed {count} times")
+            line_info = self.line_numbers.get(addr, "Unknown")
+            print(f"{line_info} -> {instruction} executed {count} times")
 
 class BreakpointAtAddress(gdb.Breakpoint):
     """Breakpoint that counts execution at a given address."""
