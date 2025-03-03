@@ -135,7 +135,10 @@ def process_json_file(file_path, output_file):
                 for variable in function.get('variables', []):
                     variable_name = variable['name']
                     variable_size = variable['size']
-                    write_count = len(variable['lines']['write'])
+                    if "write_count" in variable:
+                        write_count = variable['write_count']
+                    else:
+                        write_count = 1
                     used_lines = variable['lines']['write'] + variable['lines']['read']
                     # variable_count = len(function.get('variables', []))
                     

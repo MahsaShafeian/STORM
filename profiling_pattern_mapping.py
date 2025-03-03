@@ -155,9 +155,9 @@ class AssemblyParser:
                                 "loop_label": target_label,
                                 "start_line": loop_labels[target_label],
                                 "end_line": line_number,
-                                "initial_value": initial_value,
-                                "step_value": step_value,
-                                "final_value": final_value,
+                                # "initial_value": initial_value,
+                                # "step_value": step_value,
+                                # "final_value": final_value,
                                 "iterations": iterations
                             })
 
