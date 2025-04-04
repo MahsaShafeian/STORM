@@ -93,7 +93,7 @@ def detect_stack_operations_in_functions(input_path, output_path):
                     function_name_line = lines[i - 2].strip() if i >= 2 else ""
                     if function_name_line and not function_name_line.startswith('.') and function_name_line.endswith(':'):
                         current_function = function_name_line[:-1]  
-                        print(f"\nProcessing Function: {current_function}")
+                        # print(f"\nProcessing Function: {current_function}")
                     inside_function = True
                     stack_balance = 0  
                     last_subq_index = -1
@@ -109,18 +109,18 @@ def detect_stack_operations_in_functions(input_path, output_path):
                     final_value = 64 * math.ceil(stack_balance / 64) if stack_balance > 0 else 0
                     adjustment_value = final_value - stack_balance
 
-                    print(f"  Adjusted Stack Balance (after adding 16): {stack_balance}")
-                    print(f"  Final Adjusted Value (aligned to 64): {final_value}")
-                    print(f"  Adjustment Value to add to last subq: {adjustment_value}")
+                    # print(f"  Adjusted Stack Balance (after adding 16): {stack_balance}")
+                    # print(f"  Final Adjusted Value (aligned to 64): {final_value}")
+                    # print(f"  Adjustment Value to add to last subq: {adjustment_value}")
 
                     if last_subq_index != -1:
                         new_subq_value = last_subq_value + adjustment_value
                         modified_lines[last_subq_index] = f"    subq    ${new_subq_value}, %rsp\n"
-                        print(f"  Updated last subq to: subq ${new_subq_value}, %rsp")
+                        # print(f"  Updated last subq to: subq ${new_subq_value}, %rsp")
                     if last_addq_index != -1:
                         new_addq_value = last_addq_value - adjustment_value
                         modified_lines[last_addq_index] = f"    addq    ${new_addq_value}, %rsp\n"
-                        print(f"  Updated last addq to: addq ${new_addq_value}, %rsp")
+                        # print(f"  Updated last addq to: addq ${new_addq_value}, %rsp")
                     
                     current_function = None
                 
@@ -168,7 +168,7 @@ def replace_popq_with_leave(input_path, output_path):
         with open(output_path, 'w') as f:
             f.writelines(modified_lines)
 
-        print(f"Replacement completed. Modified file saved to: {output_path}")
+        # print(f"Replacement completed. Modified file saved to: {output_path}")
 
     except FileNotFoundError:
         print(f"Error: The file {input_path} does not exist.")
@@ -290,18 +290,18 @@ def remove_stack_modifying_loop(input_path, output_path):
                             modified_lines.insert(start_line, ''.join(new_instructions))
                             insertion_point = start_line + len(new_instructions) 
                             changes_made = True
-                            print(f"Loop removed and replaced with stack adjustment at line {start_line + 1} with stack size: {stack_size}")
+                            # print(f"Loop removed and replaced with stack adjustment at line {start_line + 1} with stack size: {stack_size}")
 
         if stack_modifying_found and insertion_point is not None:
             modified_lines.insert(insertion_point, "    orq     $0, (%rsp)\n")
-            print(f"Added 'orq $0, (%rsp)' after stack adjustment at line {insertion_point + 1}")
+            # print(f"Added 'orq $0, (%rsp)' after stack adjustment at line {insertion_point + 1}")
 
         if changes_made:
             with open(output_path, 'w') as f:
                 f.writelines(modified_lines)
-            print(f"Modifications saved to: {output_path}")
-        else:
-            print("No stack-modifying loops found.")
+            # print(f"Modifications saved to: {output_path}")
+        # else:
+        #     print("No stack-modifying loops found.")
 
     except FileNotFoundError:
         print(f"Error: The file {input_path} does not exist.")
@@ -309,13 +309,6 @@ def remove_stack_modifying_loop(input_path, output_path):
         print(f"An unexpected error occurred: {e}")
 
 def main():
-    # input_path = "/home/mahsa/Documents/MiBench_project/susan/susan.s"
-    # output_path = "/home/mahsa/Documents/MiBench_project/susan/susan_alignment.s"
-    # input_path = "/home/mahsa/Documents/MiBench_project/qsort/qsort_small.s"
-    # output_path = "/home/mahsa/Documents/MiBench_project/qsort/qsort_small_alignment.s"
-    
-    # file_paths = []
-    # file_number = int(input("Number of files to process: "))
     input_path = input(f"Enter path for file: ")
     output_path = input("Enter output assembly file path: ")
 

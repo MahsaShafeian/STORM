@@ -91,6 +91,51 @@ def find_tree(local_list, variable_list, index):
     else:
         # print(f"local list:{local_list}, variable list: {variable_list}")
         return
+    
+
+
+def assign_variables_to_blocks(profiling_json, proration_json):
+    try:
+        with open(profiling_json, 'r') as file:
+            profiling_data = json.load(file)
+
+        with open(proration_json, 'r') as file:
+            proration_data = json.load(file)
+
+        variable_block_mapping = {}
+
+        for function in profiling_data:
+            function_name = function.get("function_name")
+            
+            blocks = proration_data[function_name].get("nodes", [])
+            variables = function.get("variables", [])
+
+            if function_name not in variable_block_mapping:
+                variable_block_mapping[function_name] = {}
+
+            for variable in variables:
+                var_name = variable['name']
+                write_lines = variable.get('lines', {}).get('write', [])
+
+                for block in blocks:
+                    block_id = block['id']
+                    block_start = block['start']
+                    block_end = block['end']
+
+                    for line in write_lines:
+                        if block_start <= line <= block_end:
+                            if var_name not in variable_block_mapping[function_name]:
+                                variable_block_mapping[function_name][var_name] = []
+                            if block_id not in variable_block_mapping[function_name][var_name]:
+                                variable_block_mapping[function_name][var_name].append(block_id)
+
+        return variable_block_mapping
+
+    except FileNotFoundError:
+        print("یکی از فایل‌های JSON پیدا نشد.")
+    except json.JSONDecodeError:
+        print("خطا در خواندن فایل JSON. لطفاً فرمت فایل‌ها را بررسی کنید.")
+
 
 def process_json_file(file_path, output_file):
     try:
@@ -176,7 +221,7 @@ def process_json_file(file_path, output_file):
                 match = re.search(r'\$(\d+)', last_line)
                 if match:
                     last_size = int(match.group(1))
-                print(f"last_size:{last_size}")
+                # print(f"last_size:{last_size}")
                 last_stack_size = final_stack_size - (stack_size - last_size)
                 
                 variable_details[function_name] = variable_list
@@ -252,12 +297,19 @@ def process_json_file(file_path, output_file):
         print("Error decoding JSON. Please check the file format.")
         
 def main():
-    json_file_path = input("profiling json file:")
+    profiling_json = input("profiling json file:")
+    proration_json = input("proration json file:")
     output_file_path = input("log file:")
-    # assembly_file_path = input("input assembly file:")
-    # modified_assembly_file_path = input("output assembly file:")
     
-    process_json_file(json_file_path, output_file_path)
+    variable_blocks = assign_variables_to_blocks(profiling_json, proration_json)
+    for function_name, variables in variable_blocks.items():
+        print(f"function_name: {function_name}")
+        for var_name, blocks in variables.items():
+            print(f"variable: {var_name} -> blocks: {blocks}")
+        print("-" * 40)
+
+    
+    process_json_file(profiling_json, output_file_path)
 
 if __name__ == "__main__":
     main()
