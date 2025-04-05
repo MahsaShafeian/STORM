@@ -1,0 +1,909 @@
+[
+  {
+    "function_name": "main",
+    "source_file": "/home/mahsa/Documents/MiBench/automotive/basicmath/basicmath_small_alignment.s",
+    "label": 0,
+    "stack_size": 224,
+    "last_subq": 45,
+    "call_count": 0,
+    "total_variable_size": 200,
+    "variables": [
+      {
+        "name": "-8(%rbp)",
+        "lines": {
+          "read": [
+            501
+          ],
+          "write": [
+            48
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-192(%rbp)",
+        "lines": {
+          "read": [
+            112,
+            308,
+            377,
+            384
+          ],
+          "write": [
+            52,
+            280,
+            380
+          ]
+        },
+        "size": 8,
+        "write_count": 11
+      },
+      {
+        "name": "-184(%rbp)",
+        "lines": {
+          "read": [
+            111,
+            307,
+            366,
+            372
+          ],
+          "write": [
+            55,
+            286,
+            369
+          ]
+        },
+        "size": 8,
+        "write_count": 100
+      },
+      {
+        "name": "-176(%rbp)",
+        "lines": {
+          "read": [
+            110,
+            306,
+            356,
+            363
+          ],
+          "write": [
+            58,
+            292,
+            359
+          ]
+        },
+        "size": 8,
+        "write_count": 1891
+      },
+      {
+        "name": "-168(%rbp)",
+        "lines": {
+          "read": [
+            109,
+            305,
+            346,
+            352
+          ],
+          "write": [
+            61,
+            298,
+            349
+          ]
+        },
+        "size": 8,
+        "write_count": 19801
+      },
+      {
+        "name": "-152(%rbp)",
+        "lines": {
+          "read": [
+            155
+          ],
+          "write": [
+            64
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-144(%rbp)",
+        "lines": {
+          "read": [
+            154
+          ],
+          "write": [
+            67
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-136(%rbp)",
+        "lines": {
+          "read": [
+            153
+          ],
+          "write": [
+            70
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-128(%rbp)",
+        "lines": {
+          "read": [
+            152
+          ],
+          "write": [
+            73
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-120(%rbp)",
+        "lines": {
+          "read": [
+            198
+          ],
+          "write": [
+            76
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-112(%rbp)",
+        "lines": {
+          "read": [
+            197
+          ],
+          "write": [
+            79
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-104(%rbp)",
+        "lines": {
+          "read": [
+            196
+          ],
+          "write": [
+            82
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-96(%rbp)",
+        "lines": {
+          "read": [
+            195
+          ],
+          "write": [
+            85
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-88(%rbp)",
+        "lines": {
+          "read": [
+            241
+          ],
+          "write": [
+            88
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-80(%rbp)",
+        "lines": {
+          "read": [
+            240
+          ],
+          "write": [
+            91
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-72(%rbp)",
+        "lines": {
+          "read": [
+            239
+          ],
+          "write": [
+            94
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-64(%rbp)",
+        "lines": {
+          "read": [
+            238
+          ],
+          "write": [
+            97
+          ]
+        },
+        "size": 8,
+        "write_count": 1
+      },
+      {
+        "name": "-56(%rbp)",
+        "lines": {
+          "read": [
+            418,
+            424
+          ],
+          "write": [
+            99
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-48(%rbp)",
+        "lines": {
+          "read": [],
+          "write": [
+            101
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-32(%rbp)",
+        "lines": {
+          "read": [
+            107,
+            133,
+            150,
+            176,
+            193,
+            219,
+            236,
+            262,
+            303,
+            329
+          ],
+          "write": []
+        },
+        "size": 24
+      },
+      {
+        "name": "-200(%rbp)",
+        "lines": {
+          "read": [
+            108,
+            143,
+            151,
+            186,
+            194,
+            229,
+            237,
+            272,
+            304,
+            339
+          ],
+          "write": []
+        },
+        "size": 4
+      },
+      {
+        "name": "-196(%rbp)",
+        "lines": {
+          "read": [
+            131,
+            144,
+            174,
+            187,
+            217,
+            230,
+            260,
+            273,
+            327,
+            340,
+            396,
+            404,
+            414
+          ],
+          "write": [
+            126,
+            140,
+            169,
+            183,
+            212,
+            226,
+            255,
+            269,
+            322,
+            336,
+            391,
+            411
+          ]
+        },
+        "size": 4
+      },
+      {
+        "name": "-40(%rbp)",
+        "lines": {
+          "read": [
+            398,
+            403,
+            417,
+            423
+          ],
+          "write": []
+        },
+        "size": 8
+      },
+      {
+        "name": "-160(%rbp)",
+        "lines": {
+          "read": [
+            441,
+            447,
+            455,
+            462,
+            475,
+            481,
+            489,
+            496
+          ],
+          "write": [
+            436,
+            458,
+            470,
+            492
+          ]
+        },
+        "size": 8,
+        "write_count": 724
+      }
+    ],
+    "loops": [
+      {
+        "loop_label": ".L3",
+        "start_line": 129,
+        "end_line": 145,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L5",
+        "start_line": 172,
+        "end_line": 188,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L7",
+        "start_line": 215,
+        "end_line": 231,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L9",
+        "start_line": 258,
+        "end_line": 274,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L15",
+        "start_line": 325,
+        "end_line": 341,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L16",
+        "start_line": 301,
+        "end_line": 354,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L17",
+        "start_line": 295,
+        "end_line": 364,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L18",
+        "start_line": 289,
+        "end_line": 375,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L19",
+        "start_line": 283,
+        "end_line": 385,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L21",
+        "start_line": 394,
+        "end_line": 415,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L23",
+        "start_line": 439,
+        "end_line": 463,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L25",
+        "start_line": 473,
+        "end_line": 497,
+        "iterations": null
+      }
+    ]
+  },
+  {
+    "function_name": "rad2deg",
+    "source_file": "/home/mahsa/Documents/MiBench/automotive/basicmath/rad2deg_alignment.s",
+    "label": 0,
+    "stack_size": 32,
+    "last_subq": 22,
+    "call_count": 0,
+    "total_variable_size": 8,
+    "variables": [
+      {
+        "name": "-8(%rbp)",
+        "lines": {
+          "read": [
+            30
+          ],
+          "write": [
+            23
+          ]
+        },
+        "size": 8,
+        "write_count": 0
+      }
+    ],
+    "loops": []
+  },
+  {
+    "function_name": "deg2rad",
+    "source_file": "/home/mahsa/Documents/MiBench/automotive/basicmath/rad2deg_alignment.s",
+    "label": 0,
+    "stack_size": 32,
+    "last_subq": 61,
+    "call_count": 0,
+    "total_variable_size": 8,
+    "variables": [
+      {
+        "name": "-8(%rbp)",
+        "lines": {
+          "read": [
+            69
+          ],
+          "write": [
+            62
+          ]
+        },
+        "size": 8,
+        "write_count": 0
+      }
+    ],
+    "loops": []
+  },
+  {
+    "function_name": "SolveCubic",
+    "source_file": "/home/mahsa/Documents/MiBench/automotive/basicmath/cubic_alignment.s",
+    "label": 0,
+    "stack_size": 176,
+    "last_subq": 22,
+    "call_count": 0,
+    "total_variable_size": 152,
+    "variables": [
+      {
+        "name": "-104(%rbp)",
+        "lines": {
+          "read": [
+            36,
+            43,
+            50
+          ],
+          "write": [
+            23
+          ]
+        },
+        "size": 8,
+        "write_count": 18004
+      },
+      {
+        "name": "-112(%rbp)",
+        "lines": {
+          "read": [
+            35
+          ],
+          "write": [
+            24
+          ]
+        },
+        "size": 8,
+        "write_count": 18004
+      },
+      {
+        "name": "-120(%rbp)",
+        "lines": {
+          "read": [
+            42
+          ],
+          "write": [
+            25
+          ]
+        },
+        "size": 8,
+        "write_count": 18004
+      },
+      {
+        "name": "-128(%rbp)",
+        "lines": {
+          "read": [
+            49
+          ],
+          "write": [
+            26
+          ]
+        },
+        "size": 8,
+        "write_count": 18004
+      },
+      {
+        "name": "-136(%rbp)",
+        "lines": {
+          "read": [
+            118,
+            257
+          ],
+          "write": [
+            27
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-144(%rbp)",
+        "lines": {
+          "read": [
+            173,
+            207,
+            246,
+            278,
+            281,
+            286,
+            297,
+            300,
+            316,
+            319,
+            331
+          ],
+          "write": [
+            28
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-152(%rbp)",
+        "lines": {
+          "read": [
+            39,
+            46,
+            53,
+            129,
+            132,
+            138,
+            145,
+            161,
+            163,
+            171,
+            178,
+            197,
+            199,
+            211,
+            217,
+            236,
+            238,
+            250,
+            266,
+            284,
+            289,
+            296,
+            322,
+            330
+          ],
+          "write": [
+            37,
+            44,
+            51,
+            128,
+            131,
+            137,
+            144,
+            150,
+            162,
+            170,
+            177,
+            183,
+            198,
+            210,
+            216,
+            222,
+            237,
+            249,
+            265,
+            283,
+            288,
+            295,
+            321,
+            329
+          ]
+        },
+        "size": 8,
+        "write_count": 112000
+      },
+      {
+        "name": "-80(%rbp)",
+        "lines": {
+          "read": [
+            56,
+            70,
+            74,
+            77,
+            80,
+            165,
+            201,
+            240,
+            324
+          ],
+          "write": [
+            40
+          ]
+        },
+        "size": 16
+      },
+      {
+        "name": "-64(%rbp)",
+        "lines": {
+          "read": [
+            60,
+            84
+          ],
+          "write": [
+            47
+          ]
+        },
+        "size": 16
+      },
+      {
+        "name": "-48(%rbp)",
+        "lines": {
+          "read": [
+            89
+          ],
+          "write": [
+            54
+          ]
+        },
+        "size": 16
+      },
+      {
+        "name": "-32(%rbp)",
+        "lines": {
+          "read": [
+            103,
+            107,
+            121,
+            125,
+            143,
+            176,
+            215,
+            291
+          ],
+          "write": [
+            68
+          ]
+        },
+        "size": 16
+      },
+      {
+        "name": "-16(%rbp)",
+        "lines": {
+          "read": [
+            99,
+            134,
+            264,
+            302
+          ],
+          "write": [
+            97
+          ]
+        },
+        "size": 16
+      },
+      {
+        "name": "-96(%rbp)",
+        "lines": {
+          "read": [
+            115,
+            260
+          ],
+          "write": [
+            112
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-88(%rbp)",
+        "lines": {
+          "read": [
+            152,
+            185,
+            224
+          ],
+          "write": [
+            141
+          ]
+        },
+        "size": 8
+      }
+    ],
+    "loops": [
+      {
+        "loop_label": ".L10",
+        "start_line": 255,
+        "end_line": 116,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L11",
+        "start_line": 310,
+        "end_line": 306,
+        "iterations": null
+      }
+    ]
+  },
+  {
+    "function_name": "usqrt",
+    "source_file": "/home/mahsa/Documents/MiBench/automotive/basicmath/isqrt_alignment.s",
+    "label": 0,
+    "stack_size": 80,
+    "last_subq": 22,
+    "call_count": 0,
+    "total_variable_size": 64,
+    "variables": [
+      {
+        "name": "-56(%rbp)",
+        "lines": {
+          "read": [
+            49
+          ],
+          "write": [
+            23,
+            56
+          ]
+        },
+        "size": 20
+      },
+      {
+        "name": "-64(%rbp)",
+        "lines": {
+          "read": [
+            87
+          ],
+          "write": [
+            24
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-8(%rbp)",
+        "lines": {
+          "read": [
+            91
+          ],
+          "write": [
+            27
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-32(%rbp)",
+        "lines": {
+          "read": [
+            58,
+            62,
+            75,
+            85
+          ],
+          "write": [
+            35,
+            60,
+            77
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-24(%rbp)",
+        "lines": {
+          "read": [
+            46,
+            68
+          ],
+          "write": [
+            37,
+            54,
+            73
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-16(%rbp)",
+        "lines": {
+          "read": [
+            69,
+            72
+          ],
+          "write": [
+            39,
+            66
+          ]
+        },
+        "size": 8
+      },
+      {
+        "name": "-36(%rbp)",
+        "lines": {
+          "read": [
+            83
+          ],
+          "write": [
+            41,
+            80
+          ]
+        },
+        "size": 4
+      }
+    ],
+    "loops": [
+      {
+        "loop_label": ".L3",
+        "start_line": 78,
+        "end_line": 70,
+        "iterations": null
+      },
+      {
+        "loop_label": ".L4",
+        "start_line": 44,
+        "end_line": 84,
+        "iterations": null
+      }
+    ]
+  }
+]
