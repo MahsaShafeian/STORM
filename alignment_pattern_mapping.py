@@ -309,8 +309,8 @@ def remove_stack_modifying_loop(input_path, output_path):
         print(f"An unexpected error occurred: {e}")
 
 def main():
-    input_path = input(f"Enter path for file: ")
-    output_path = input("Enter output assembly file path: ")
+    input_path = input(f"Enter original file path: ")
+    output_path = input("Enter output file path: ")
 
     replace_popq_with_leave(input_path, output_path)
     remove_stack_modifying_loop(output_path, output_path)

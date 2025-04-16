@@ -12,7 +12,8 @@ class AssemblyParser:
 
     def __init__(self):
         self.instructions = []
-        self.functions = {}
+        self.functions = []
+        self.functions_inst = {}
         self.stack_frames = {}
         self.function_calls = {}
         self.call_labels = {}
@@ -170,6 +171,14 @@ class AssemblyParser:
         recording_function = False
         stack_size = 0
         loop_labels = {}
+        
+        for line, file_name, line_number in lines_with_files:
+            clean_line = self.clean_line(line)
+            if clean_line:
+                if not clean_line.startswith('.') and clean_line.endswith(':'):
+                    func_name = clean_line[:-1]
+                    if func_name not in self.functions:
+                        self.functions.append(func_name)
 
         for line, file_name, line_number in lines_with_files:
             clean_line = self.clean_line(line)
@@ -183,7 +192,8 @@ class AssemblyParser:
 
                 elif '.cfi_startproc' in clean_line and current_function:
                     recording_function = True
-                    self.functions[current_function] = []
+                    
+                    self.functions_inst[current_function] = []
                     self.function_calls[current_function] = []
                     self.function_call_counts[current_function] = 0
                     self.stack_access[current_function] = {}
@@ -208,11 +218,26 @@ class AssemblyParser:
                 elif recording_function:
                     instruction = self.parse_instruction(clean_line)
                     if instruction and current_function:
-                        self.functions[current_function].append(instruction)
+                        self.functions_inst[current_function].append(instruction)
                         self.function_lines[current_function].append(line_number)
 
                         stack_size += self.get_stack_size_change(instruction)
                         self.check_stack_access(instruction, current_function, line_number)
+                        # Check for function calls
+                        if instruction[0] == 'call':
+                            called_function = instruction[1][0]
+
+                            # Handle calls with @PLT
+                            if '@PLT' in called_function:
+                                stripped_function = called_function.replace('@PLT', '').strip()
+                                if (stripped_function in self.functions) and (stripped_function not in self.function_calls[current_function]):
+                                    self.function_calls[current_function].append(stripped_function)
+                            else:
+                                # Handle normal calls
+                                if called_function != current_function:
+                                    self.function_calls[current_function].append(called_function)
+                            # print(f"func_name: {current_function} ,function_calls: {self.function_calls[current_function]}")
+
                 
                     if (("subq" in clean_line) or ("addq" in clean_line)) and ("%rsp" in clean_line) and recording_function:
                         self.last_subq[current_function] = line_number
@@ -299,7 +324,7 @@ class AssemblyParser:
     def get_json_data(self):
         """Organize the data in JSON format with stack read/write access."""
         json_data = []
-        for func_name in self.functions:
+        for func_name in self.functions_inst:
             formatted_variables = [
                 {
                     "name": address + ')',
@@ -314,7 +339,7 @@ class AssemblyParser:
                 "label": self.call_labels.get(func_name, 0),
                 "stack_size": self.stack_frames.get(func_name, ""),
                 "last_subq" : self.last_subq[func_name],
-                "call_count": self.function_call_counts.get(func_name, 0),
+                "calls": self.function_calls.get(func_name, []),
                 "total_variable_size": sum(details["size"]for details in self.stack_access.get(func_name, {}).values()),
                 "variables": formatted_variables,
                 "loops": self.loops.get(func_name, [])

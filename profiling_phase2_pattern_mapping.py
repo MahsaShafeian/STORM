@@ -197,6 +197,60 @@ def construct_cfg(functions_blocks, asm_files):
     
     return cfg
 
+import json
+
+def assign_variables_to_blocks(profiling_json, proration_json):
+    try:
+        with open(profiling_json, 'r') as file:
+            profiling_data = json.load(file)
+
+        with open(proration_json, 'r') as file:
+            proration_data = json.load(file)
+
+        variable_block_mapping = {}
+
+        for function in profiling_data:
+            function_name = function.get("function_name")
+            
+            blocks = proration_data.get(function_name, {}).get("nodes", [])
+            variables = function.get("variables", [])
+
+            if function_name not in variable_block_mapping:
+                variable_block_mapping[function_name] = {}
+
+            for variable in variables:
+                var_name = variable['name']
+                write_lines = variable.get('lines', {}).get('write', [])
+                read_lines = variable.get('lines', {}).get('read', [])
+
+                if var_name not in variable_block_mapping[function_name]:
+                    variable_block_mapping[function_name][var_name] = {
+                        "read": [],
+                        "write": []
+                    }
+
+                for block in blocks:
+                    block_id = block['id']
+                    block_start = block['start']
+                    block_end = block['end']
+
+                    for line in read_lines:
+                        if block_start <= line <= block_end:
+                            if block_id not in variable_block_mapping[function_name][var_name]["read"]:
+                                variable_block_mapping[function_name][var_name]["read"].append(block_id)
+
+                    for line in write_lines:
+                        if block_start <= line <= block_end:
+                            if block_id not in variable_block_mapping[function_name][var_name]["write"]:
+                                variable_block_mapping[function_name][var_name]["write"].append(block_id)
+
+        return variable_block_mapping
+
+    except FileNotFoundError:
+        print("Json file not found.")
+    except json.JSONDecodeError:
+        print("Error in opening json.")
+
 
 def extract_cfg_from_assembly(json_data):
     functions_blocks = identify_basic_blocks(json_data)
@@ -216,14 +270,21 @@ def assign_new_stack_space(block_variable_map_all):
 
 def main():
     json_file = input("Enter JSON file path: ")
+    output_file = input("Enter output JSON file path: ")
     json_data = read_json(json_file)
     functions_blocks = identify_basic_blocks(json_data)
     frequent_vars_by_function = identify_frequent_variables(json_data, functions_blocks)
     block_variable_map_all = map_variables_to_blocks(json_data, functions_blocks, frequent_vars_by_function)
     # assign_new_stack_space(block_variable_map_all)
     
+    variable_blocks = assign_variables_to_blocks(json_file, output_file)
+    for function_name, variables in variable_blocks.items():
+        print(f"function_name: {function_name}")
+        for var_name, blocks in variables.items():
+            print(f"variable: {var_name} -> blocks: {blocks}")
+        print("-" * 40)
     cfg = extract_cfg_from_assembly(json_data)
-    output_file = input("Enter output JSON file path: ")
+    
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(cfg, f, indent=4)
     
