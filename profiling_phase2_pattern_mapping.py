@@ -197,7 +197,6 @@ def construct_cfg(functions_blocks, asm_files):
     
     return cfg
 
-import json
 
 def assign_variables_to_blocks(profiling_json, proration_json):
     try:
@@ -273,6 +272,13 @@ def main():
     output_file = input("Enter output JSON file path: ")
     json_data = read_json(json_file)
     functions_blocks = identify_basic_blocks(json_data)
+    cfg = extract_cfg_from_assembly(json_data)
+    
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(cfg, f, indent=4)
+    
+    print(f"CFG saved to {output_file}")
+
     frequent_vars_by_function = identify_frequent_variables(json_data, functions_blocks)
     block_variable_map_all = map_variables_to_blocks(json_data, functions_blocks, frequent_vars_by_function)
     # assign_new_stack_space(block_variable_map_all)
@@ -283,12 +289,8 @@ def main():
         for var_name, blocks in variables.items():
             print(f"variable: {var_name} -> blocks: {blocks}")
         print("-" * 40)
-    cfg = extract_cfg_from_assembly(json_data)
     
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(cfg, f, indent=4)
     
-    print(f"CFG saved to {output_file}")
-
+    
 if __name__ == "__main__":
     main()

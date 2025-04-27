@@ -60,7 +60,7 @@ class Genetic:
 
     @staticmethod
     def find_best(variable_count, variable_list, usage_array):
-        print(f"usage_array:{usage_array}")
+        # print(f"usage_array:{usage_array}")
         parents = []
         for i in range(10):
             c1 = []
@@ -79,7 +79,7 @@ class Genetic:
             parents = Genetic.merge_parents(parents)
             parents = sorted(parents, key=lambda x: Genetic.fitness_function(x, usage_array)[1], reverse=False)
             parents = parents[:10]
-            print(f"best max_value:{Genetic.fitness_function(parents[0], usage_array)[1]}")
+            # print(f"best max_value:{Genetic.fitness_function(parents[0], usage_array)[1]}")
         
         return parents[0]
             

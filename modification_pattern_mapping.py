@@ -11,9 +11,12 @@ num_of_columns = 16
 blk_size = 64
 wait_list = []
 ready_list = []
+done_list = []
 end_main = 0
 data = None
 usage_matrix = None
+
+files_line = {}
 
 def generate_write_list(variable_list, usage_array):
 
@@ -110,7 +113,7 @@ def modify_asm(function_name, start, output_file):
     function_usage_arrays = {}
     
     variable_details = {} 
-    
+    print(f"start modifying {function_name}")
     function = {}
     for f in data:
         if f["function_name"] == function_name:
@@ -128,7 +131,12 @@ def modify_asm(function_name, start, output_file):
         print(f"Assembly files not specified for function {function_name}. Skipping.")
         return
     
-    if asm_file_path != assembly_file:
+    # if asm_file_path != assembly_file:
+    if assembly_file in files_line:
+        asm_lines = files_line[assembly_file][0]
+        assembly_file = files_line[assembly_file][1]
+        
+    else:
         try:
             with open(assembly_file, 'r') as asm_file:
                 asm_lines = asm_file.readlines()
@@ -226,6 +234,7 @@ def modify_asm(function_name, start, output_file):
         index = -8
         for list_index in range(len(locations)):
             local_variable = locations[list_index]
+            print(f"update this variable: {local_variable[0]} line: {local_variable[2]}")
             for line_p in local_variable[2]:
                 line = line_p - 1
                 offset_from_rbp = index - local_variable[3]
@@ -238,14 +247,15 @@ def modify_asm(function_name, start, output_file):
                         else:
                             line_arry[part] = target_address
                 asm_lines[line] = (' '.join(line_arry)) + "\t\t#this_line_update!"
+                print(f"line {line_p} updated to {asm_lines[line]}")
             
             for i in range(local_variable[3] // 4):
                 usage_matrix[(label + (((-index//4) + i) // 16)) % num_of_set, ((-index//4) + i) % 16] += local_variable[1]
                 
             index -= local_variable[3]
         asm_lines[last_subq -1] = f"\tsubq\t${last_stack_size}, %rsp\t\t#this_line_update!"
-        with open(assembly_file[:-2]+"_final.s", 'w') as out_file:
-            out_file.write(('\n'.join(asm_lines).replace(' ', '\t')) + '\n')
+        
+        files_line[assembly_file] = (asm_lines, assembly_file)
             
         with open(output_file, 'w') as out_file:
             for row in usage_matrix:
@@ -265,9 +275,14 @@ def modify_asm(function_name, start, output_file):
 
 def update_start(function_name, start):
     global data
+    if function_name in ready_list or function_name in done_list:
+        return
     for function in data:
         if function["function_name"] == function_name:
+            if function_name in ready_list or function_name in done_list:
+                continue
             function["start"] = start
+            print(f"function {function_name} remove from wait_list:{wait_list}")
             wait_list.remove(function_name)
             ready_list.append(function_name)
             return
@@ -275,13 +290,13 @@ def update_start(function_name, start):
     exit(0)
             
 def assign_labels(start, func_name):
-    print(f"start of {func_name}: {start}")
+    # print(f"start of {func_name}: {start}")
     for function in data:
         if function["function_name"] == func_name:
             
             label = (start // blk_size) % num_of_set
             function["lable"] = label
-            print(f"lable of {func_name}: {label}")
+            # print(f"lable of {func_name}: {label}")
             return
 
 def get_function(function_name):
@@ -305,11 +320,11 @@ def main():
         else:
             wait_list.append(function["function_name"])
             
-    print(f"wait_list:{wait_list}")
-    print(f"ready_list: {ready_list}")
     
     while len(ready_list) > 0:
-        function = get_function(ready_list.pop())
+        function_name = ready_list.pop()
+        done_list.append(function_name)
+        function = get_function(function_name)
         modify_asm(function["function_name"], function["start"], output_file_path)
         
     for function1 in wait_list:
@@ -319,9 +334,15 @@ def main():
                 ready_list.append(function1)
                 
     while len(ready_list) > 0:
-        function = get_function(ready_list.pop())
+        function_name = ready_list.pop()
+        done_list.append(function_name)
+        function = get_function(function_name)
         modify_asm(function["function_name"], end_main + 1, output_file_path)      
-
+    
+    for need_write in files_line:
+        with open(files_line[need_write][1][:-2]+"_final.s", 'w') as out_file:
+            out_file.write(('\n'.join(files_line[need_write][0]).replace(' ', '\t')) + '\n')
+            print(f"file {need_write} wrote!")
     
 if __name__ == "__main__":
     main()
